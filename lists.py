@@ -15,7 +15,7 @@ for num in mylist:
     sum += num
 print(sum)
 
-for i, x in enumer(mylist):
+for i, x in enumerate(mylist):
     print("mylist:[{}] = {}".format(i, x))
 
 

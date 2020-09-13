@@ -1,7 +1,9 @@
 # DPComputerScience
 File from classwork
 ## First class
-    Setting up Development environment. Git and Visual Studio Code.
+    Setting up Development environment. 
+    Git and Visual Studio Code.
+    This year is all about python
 ## 2020/09/11
     Learning about variable types
     Learning about operations between different types.

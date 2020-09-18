@@ -1,3 +1,4 @@
+# Operations between Different types, Casting
 print("Hello World!")
 
 a, b = 2, 3
@@ -22,5 +23,5 @@ print("{} + {} = {}".format(type(a), type(b), type(result)))
 
 a, b = 6, "4"
 result = a + int(b)
-print("{} + {} = {}".format(a, b, result))
+print("{} + {} = {}".format(a, b,  result))
 print("{} + {} = {}".format(type(a), type(b), type(result)))

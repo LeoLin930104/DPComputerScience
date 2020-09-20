@@ -3,7 +3,7 @@
 mylist = [1, 2, 3, 4, 5]
 print(mylist, type(mylist))
 
-# asign values 
+# assign values 
 print(mylist[0])
 print(mylist[1])
 print(mylist[2])
@@ -35,7 +35,7 @@ print(mylist)
 length = len(mylist)
 print(length)
 
-# Repeated elements asign
+# Repeated elements assign
 mylist = [0]*20
 print(mylist)
 mylist = [0,1]*10

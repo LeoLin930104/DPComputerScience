@@ -1,15 +1,22 @@
 # DPComputerScience
 File from classwork
 ## First class
+### Content
     Setting up Development environment. 
     Git and Visual Studio Code.
     This year is all about Python.
+### File
++ [README.md](README.md)
 ## 2020/09/11
+### Content
     Variable types
     Operations between different types.
     Casting types
     Lists and its operation
     Simple loops
+### File
++ [variable.py](variable.py)
++ [operater.py](operater.py)
 ## 2020/09/18
 ### Content
     Assigning elements in lists
@@ -28,10 +35,13 @@ File from classwork
     Introduce of Filter
     Sublist: first Inclusive, end exclusive
     Swap element
-    Shallow Copy, directing to identical RAM location
+    Shallow Copy, directing to identical RAM * location
 ### Homework
-    Assigned Homework, due 2020/09/25 Friday.
-    list.exercises.py
+    Assigned Homework, list_exercises.py, due 2020/09/25 Friday.
+### File
++ [lists.py](lists.py)
++ [newton.py](newton.py)
++ [list_exercises.py](list_exercises.py)
 
     
     

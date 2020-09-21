@@ -16,19 +16,17 @@ def remove_duplicates(alist):
 # 03. Write code that finds the similarities between two lists (Intersection)
 def find_intersection(alist, blist):
     print("Problem 3: Find Intersection between lists")
-    print("Intersection: {}".format(list(dict.fromkeys([x for x in alist if x in blist]))))
+    print("Intersection: {}".format([x for x in alist if x in blist]))
 
 # 04. Write code that finds the differences between two lists.
 def find_differences(alist, blist):
     print("Problem 4: Find differences between lists")
-    print("Difference: {}".format(list(dict.fromkeys([x for x in alist if x not in blist] + [x for x in blist if x not in alist]))))
+    print("Difference: {}".format([x for x in alist if x not in blist] + [x for x in blist if x not in alist]))
 
 # 05. Write code that gets the frequency of items in a list.
 def find_frequency(alist):
     print("Problem 5: Find frequency of elements in list")
-    frequency = [[x, alist.count(x)] for x in alist]
-    frequency.sort()
-    print("Frequency: {}".format(list(frequency for frequency,_ in itertools.groupby(frequency))))
+    print("Frequency: {}".format(list(dict.fromkeys([(x, alist.count(x)) for x in alist]))))
 
 
 if __name__ == "__main__":

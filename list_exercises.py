@@ -5,7 +5,7 @@ blist = [random.randint(0, 9) for i in range(10)]
 
 # 01. Sum all the elements of the list.
 def find_sum(alist):
-    print("Problem 1: Find Sum")
+    print("Problem 1: Find Sum of Elements in list")
     print("Sum: {}".format(sum(alist)))
 
 # 02. Write code that removes all the duplicates in a list.

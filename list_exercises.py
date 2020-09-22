@@ -2,6 +2,8 @@ import random
 import itertools
 alist = [random.randint(0, 9) for i in range(10)]
 blist = [random.randint(0, 9) for i in range(10)]
+alist.sort()
+blist.sort()
 
 # 01. Sum all the elements of the list.
 def find_sum(alist):
@@ -30,6 +32,8 @@ def find_frequency(alist):
 
 
 if __name__ == "__main__":
+    print("List A: {}".format(alist))
+    print("List B: {}".format(blist))
     find_sum(alist)
     remove_duplicates(alist)
     find_intersection(alist, blist)

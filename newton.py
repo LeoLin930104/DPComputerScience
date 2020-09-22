@@ -3,11 +3,14 @@
 # For many Iterations
 # guess = f(guess) / f'(guess)
 
-def newton():
-    g = 1
+def newton(a, b, c):
+    g = (b**2 -4*a*c) + 1
     for i in range(100):
-        g -= (g**2 - 8*g + 18) / (2*g - 8)
+        g -= (a * g**2 + b * g + c) / (2 * g + b)
     print(g)
 
 if __name__ == "__main__":
-    newton()
+    a = int(input('a: '))
+    b = int(input('b: '))
+    c = int(input('c: '))
+    newton(a, b, c)

@@ -1,5 +1,6 @@
 # DPComputerScience
 File from classwork
+
 ## First class
 > ### Content
 >     Setting up Development environment. 
@@ -7,6 +8,7 @@ File from classwork
 >     This year is all about Python.
 > ### File
 > + [README.md](README.md)
+
 ## 2020/09/11
 > ### Content
 >     Variable types
@@ -17,6 +19,7 @@ File from classwork
 > ### File
 > + [variable.py](variable.py)
 > + [operater.py](operater.py)
+
 ## 2020/09/18
 > ### Content
 >     Assigning elements in lists
@@ -43,5 +46,29 @@ File from classwork
 > + [newton.py](newton.py)
 > + [list_exercises.py](list_exercises.py)
 
-    
+## 2020/09/25
+> ### Content
+> ####  Dictionary
+>     Dictionary in Python
+>     Keys and Values
+>     Determine if key exist in Dictionary
+>     Null Return in Dictionary
+>     Remove Data with Keys and Return
+>     Emptying the Entire Dictionary
+>     Add a new key
+> ####  Strings
+>     Basic Strings
+>     Special Characters (escape characters)
+>     Raw Text
+>     String Resoruces of System
+>     Using unicode to Call for Character
+>     Iterating using String
+>     Formating 
+>     Replacing
+>     Spliting 
+>     Finding
+>     Join Lists into String
+> ### File
+> + [dicts.py](dicts.py)
+> + [strings.py](strings.py)
     

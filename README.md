@@ -71,7 +71,7 @@ File from classwork
 > ### File
 > + [dicts.py](dicts.py)
 > + [strings.py](strings.py)
-## 2020/09/25
+## 2020/09/26
 > ### Content
 >     Practices of Strings, Dictionary from last class
 > ### File

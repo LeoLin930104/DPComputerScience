@@ -48,7 +48,7 @@ File from classwork
 
 ## 2020/09/25
 > ### Content
-> ####  Dictionary
+> #### Dictionary
 >     Dictionary in Python
 >     Keys and Values
 >     Determine if key exist in Dictionary
@@ -56,7 +56,7 @@ File from classwork
 >     Remove Data with Keys and Return
 >     Emptying the Entire Dictionary
 >     Add a new key
-> ####  Strings
+> #### Strings
 >     Basic Strings
 >     Special Characters (escape characters)
 >     Raw Text
@@ -71,4 +71,11 @@ File from classwork
 > ### File
 > + [dicts.py](dicts.py)
 > + [strings.py](strings.py)
+## 2020/09/25
+> ### Content
+>     Practices of Strings, Dictionary from last class
+> ### File
+> + [string_exersices.py](string_exersices.py)
+
+
     

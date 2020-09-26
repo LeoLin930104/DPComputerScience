@@ -2,8 +2,6 @@ import random
 import itertools
 alist = [random.randint(0, 9) for i in range(10)]
 blist = [random.randint(0, 9) for i in range(10)]
-alist.sort()
-blist.sort()
 
 # 01. Sum all the elements of the list.
 def find_sum(alist):

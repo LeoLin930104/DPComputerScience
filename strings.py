@@ -83,4 +83,3 @@ print(text.index('th'))
 words = ['one', 'two', 'three', 'four']
 text = ' '.join(words)
 print(text)
-

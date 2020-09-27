@@ -32,7 +32,6 @@ def seperator():
     for i in range(len(mystr)-mySyn[0], 0, -(mySyn[0])):
         mystr = mystr[:i] + mySyn[1] + mystr[i:]
     print(mystr)
-        
     
 # 04. Write a program to move the spaces to the from of a given string
 def moveSpace():
@@ -63,9 +62,9 @@ def balanceParen():
     print(balance)
 
 if __name__ == "__main__":
-    frequency()
-    insertStr()
+    #frequency()
+    #insertStr()
     seperator()
-    moveSpace()
-    sumString()
-    balanceParen()
+    #moveSpace()
+    #sumString()
+    #balanceParen()

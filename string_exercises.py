@@ -44,10 +44,16 @@ def moveSpace():
 # 05. Write a program to compute the sum of the digits of a sum of a given numeric string
 def sumString():
     mystr = input("Insert a number string: ")
+    if mystr.isnumeric() == False : 
+        print("String Not Numeric")
+        return 
     print(sum([int(x) for x in mystr]))
 # 06. Write a program to determine if a set of parenthesis are balanced
 def balanceParen():
     myParen = input("Insert a string with only parenthesis: ")
+    if myParen.count('(') + myParen.count(')') != len(myParen):
+        print("Include character else than parenthesis")
+        return
     current = 0
     balance = True
     for x in myParen:
@@ -62,10 +68,10 @@ def balanceParen():
     print(balance)
 
 if __name__ == "__main__":
-    # frequency()
-    # insertStr()
-    # seperator()
-    # moveSpace()
-    # sumString()
-    # balanceParen()
+    frequency()
+    insertStr()
+    seperator()
+    moveSpace()
+    sumString()
+    balanceParen()
     pass

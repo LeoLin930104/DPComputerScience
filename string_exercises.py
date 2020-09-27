@@ -62,9 +62,10 @@ def balanceParen():
     print(balance)
 
 if __name__ == "__main__":
-    #frequency()
-    #insertStr()
-    seperator()
-    #moveSpace()
-    #sumString()
-    #balanceParen()
+    # frequency()
+    # insertStr()
+    # seperator()
+    # moveSpace()
+    # sumString()
+    # balanceParen()
+    pass

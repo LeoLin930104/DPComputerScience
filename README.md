@@ -76,6 +76,12 @@ File from classwork
 >     Practices of Strings, Dictionary from last class
 > ### File
 > + [string_exersices.py](string_exersices.py)
+## 2020/10/05
+> ### Content
+>     Introduction to Function
+>     Exercise with Newton's Method
+> ### File
+> + [function.py](function.py)
 
 
     

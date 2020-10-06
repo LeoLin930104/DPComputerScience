@@ -1,5 +1,5 @@
-#List are like a collection of data that can
-#be accessed through a single variable
+#List are like a collection of data that can be accessed through a single variable
+
 mylist = [1, 2, 3, 4, 5]
 print(mylist, type(mylist))
 

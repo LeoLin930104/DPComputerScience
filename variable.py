@@ -1,4 +1,4 @@
-print("Hello World!")
+# Introducing Variable of Python
 
 # int
 a = 3

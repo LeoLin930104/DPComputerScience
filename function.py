@@ -1,3 +1,7 @@
+# Function only do one thing
+# Function has a input and a output
+# Function has pre-conditions and post-conditions 
+
 def my_function():
     print("I'am a function")
 my_function()
@@ -10,6 +14,7 @@ def quad_area(width, height):
 area = quad_area(2,3)
 print(area)
 
+# Find the nth root of a number
 def nth_root(num: float, root: int, prec = 1e-20):
     if root < 0: return
     elif root % 2 == 0 and num < 0: return 0
@@ -23,3 +28,65 @@ def nth_root(num: float, root: int, prec = 1e-20):
 
 print(nth_root(25, 7))
 print(nth_root(prec=0.001, root=7, num=25))
+
+def change1(mylist: list):
+    mylist.append([4,5,6])
+    # print("List in Change1: {}".format(mylist))
+    print(f"List in Change1: {mylist}")
+
+def change2(mylist: list):
+    mylist = [4,5,6]
+    # print("List in Change2: {}".format(mylist))
+    print(f"List in Change2: {mylist}")
+
+# All parameters are pass-by-reference
+mylist = [1,2,3]
+print(f"Before Change1: {mylist}")
+change1(mylist)
+print(f"After Change1: {mylist}")
+
+print()
+
+print(f"Before Change2: {mylist}")
+change2(mylist)
+print(f"After Change2: {mylist}") 
+
+# Function can be nested inside other functions
+def nth_root2(num: float, root: int, prec=1e-20):
+    if root < 0: return
+    elif root % 2 == 0 and num < 0: return 0
+    elif num == 0 or num == 1: return num
+
+    g = 1
+    prev = 0
+
+    def f(num: float, root: int, g: float) -> float:
+        return g**root - num
+    def df(root: int, g: float) -> float:
+        return root * g**(root-1)
+        
+    while(abs(g - prev)> prec):
+        prev = g
+        g -= f(num,root,g) / df(root,g)
+    
+    return g
+
+print(nth_root2(50,4))
+
+nth_root3 = nth_root2
+print(nth_root3(50, 4))
+
+def even(val: int):
+    print(f"{val} is an even number")
+
+def odd(val: int):
+    print(f"{val} is an odd number")
+
+def do_a_thing(even_callback: callable, odd_callback: callable):
+    for i in range(20):
+        if i % 2:
+            odd_callback(i)
+        else:
+            even_callback(i)
+
+do_a_thing(even, odd)

@@ -82,6 +82,16 @@ File from classwork
 >     Exercise with Newton's Method
 > ### File
 > + [function.py](function.py)
+## 2020/10/17
+> ### Content
+>     More exercises with Functions
+>     Function only do one thing
+>     Function has a input and a output
+>     Function has pre-conditions and post-conditions
+>     Function can be nested in another function
+> ### File
+> + [function.py](function.py)
+
 
 
     

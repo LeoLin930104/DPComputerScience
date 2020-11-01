@@ -90,3 +90,42 @@ def do_a_thing(even_callback: callable, odd_callback: callable):
             even_callback(i)
 
 do_a_thing(even, odd)
+
+# Generator Functions
+# Yeild(return) without terminating the function
+def squares() -> int:
+    n = 1
+    while True:
+        yield n**2
+        n+=1
+
+gen = squares()
+val = next(gen)
+print(val)
+val = next(gen)
+print(val)
+
+# Different Pointer creates separate Increament in Squares()
+gen2 = squares()
+val = next(gen2)
+print(val)
+
+def fibonacci():
+    x, y = 0, 1
+    while(True):
+        x, y = y, x + y
+        yield x
+
+# Fibonacci Function by Generator
+gen = fibonacci()
+for _ in range(20):
+    print(next(gen))
+
+# Code of the Range Function
+def range(end: int , start: int = 0, step: int = 1) -> int:
+    while start < end:
+        yield start
+        start = start + step
+
+for n in range(10):
+    print(n)

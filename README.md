@@ -91,6 +91,19 @@ File from classwork
 >     Function can be nested in another function
 > ### File
 > + [function.py](function.py)
+## 2020/10/30
+> ### Content
+>     Generator Functions
+>     Yeild(return) without terminating the function
+>     Different Pointer creates separate Increament in Squares()
+>     Code of the Range Function
+>     Fibonacci Function by Generator
+> ### Homework
+>     Assigned Homework, function_exercises.py, due 2020/11/2 Monday.
+> ### File
+> + [function.py](function.py)
+> + [function_exercises.py](function_exercises.py)
+
 
 
 

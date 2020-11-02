@@ -66,8 +66,8 @@ def next_prime() -> int:
     prime = [2]
     current = 2
     while(True):
-        current += 1, 
-        if divisible: continue
+        current += 1 
+        if divisible(prime, current): continue
         else:
             prime.append(current)
             yield current
@@ -104,6 +104,10 @@ for _ in range(10): print(next(gen))
 
 print("Pascal Triangle")
 print(pascals_triangle(3))
+
+print("Prime")
+gen = next_prime()
+for _ in range(10): print(next(gen))
 
 print("Pascal Triangle Generator")
 gen = pascals_triangle_gen()

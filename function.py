@@ -123,9 +123,16 @@ for _ in range(20):
 
 # Code of the Range Function
 def range(end: int , start: int = 0, step: int = 1) -> int:
-    while start < end:
-        yield start
-        start = start + step
+    if step == 0:
+        return
+    elif step > 0:    
+        while start < end:
+            yield start
+            start = start + step
+    else:
+        while end > start:
+            yield start
+            start = start + step
 
 for n in range(10):
     print(n)

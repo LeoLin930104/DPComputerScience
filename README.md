@@ -103,6 +103,15 @@ File from classwork
 > ### File
 > + [function.py](function.py)
 > + [function_exercises.py](function_exercises.py)
+## 2020/11/06
+> ### Content
+>     Check on the function homework.
+>     Introduce a simple text adventure
+>     Introduce a complex text adventure 
+>     Introducing curses and downlaod
+>     Start writing own text adventure
+> ### File
+> + [context.py](Text_Adventure/context.py)
 
 
 

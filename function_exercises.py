@@ -5,7 +5,7 @@ import copy
 # factorial(10) -> 3628800
 def factorial(n: int) -> int:
     result = 1
-    for x in range(n,1, -1): result *= x
+    for x in range(n,1,-1): result *= x
     return result
 
 # Write a function that calculates a permutation 

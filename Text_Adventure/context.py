@@ -7,7 +7,7 @@ SCREEN = "screen"
 POS = "position"
 TEXT = "text"
 CALLBACK = "callback"
-STATUS_FORMAT = "Option: {:>2} |Key: {:>5} | Active: {:>2}"
+STATUS_FORMAT = "Press Up/Down to Control | Press Enter to Select | Press ESC to Leave | Key: {:>5} | Active: {:>2}"
 
 def create_menu_item(pos:int, text: str, callback: callable) -> dict:
     menu_item = { POS: pos, TEXT: text, CALLBACK: callback }
@@ -58,9 +58,9 @@ def draw_menu(ctx: dict, menu: dict) -> None:
         for idx, option in enumerate(options):
             if(idx == active):
                 scr.attron(curses.color_pair(3))
-                scr.addstr(4 + idx, 8, option[TEXT])
+                scr.addstr(8 + idx, 8, option[TEXT])
                 scr.attroff(curses.color_pair(3))
-            else: scr.addstr(4 + idx, 8, option[TEXT])
+            else: scr.addstr(8 + idx, 8, option[TEXT])
 
         # Draw Status Bar
         status_string = STATUS_FORMAT.format(active+1, key, active+1)

@@ -7,6 +7,9 @@ def factorial(n: int) -> int:
     result = 1
     for x in range(n,1,-1): result *= x
     return result
+def factorial_rec(n: int) -> int:
+    if n == 1 : return 1
+    else: return factorial_rec(n-1)
 
 # Write a function that calculates a permutation 
 # n! / (n-r)!
@@ -14,7 +17,7 @@ def factorial(n: int) -> int:
 # nPr(10, 7) -> 604800  
 # nPr(10, 4) -> 5040
 def nPr(n: int, r: int) -> int:
-    return factorial(n) / factorial(n - r)
+    return int( factorial(n) / factorial(n - r) )
 
 # Write a function that calculates a combination 
 # n! / (r!(n-r)!)
@@ -22,7 +25,7 @@ def nPr(n: int, r: int) -> int:
 # nCr(10, 7) -> 120
 # nCr(10, 4) -> 210
 def nCr(n: int, r: int) -> int:
-    return factorial(n) / (factorial(r) * factorial(n - r))
+    return int( factorial(n) / (factorial(r) * factorial(n - r)) )
 
 # Write a function that returns a list of n rows of Pascal's Triangle
 # pascals_triangle(3) -> [[1], [1, 1], [1, 2, 1]]
@@ -36,6 +39,23 @@ def pascals_triangle(n: int) -> list:
         for i, x in enumerate(pascal): pascal[i] += temp[i]
         pascal.append(1)
     return pascal
+def pascal_triangle_brent_1(n: int) -> list:
+    pascal = []
+    for i in range(n):
+        pascal = []
+        for r in range(i + 1):
+            term = nCr(i, r)
+            pascal.append(term)
+        pascal.append(pascal)
+    return pascal
+def pascal_triangle_brent_2(n: int) -> list:
+    prev, new, rows = [1], [1], []
+    for r in range(n):
+        new = [1] + [ prev[i] + prev[i+1] for i, _ in enumerate(prev) if i < len(prev)-1 ]
+        if r > 0: new.append(1)
+        rows.append(new)
+        prev = new
+    return rows
 
 # Write a generator that produces a string of * characters, each line one * longer than the previous
 # gen = star_gen()
@@ -45,10 +65,10 @@ def pascals_triangle(n: int) -> list:
 # next(gen) -> ****
 # next(gen) -> *****
 def star() -> str:
-    str = "*"
+    star = ""
     while(True):
-        yield str
-        str += "*"
+        star += "*"
+        yield star
 
 # Seive of eratosthenes 
 # Create a generator function that will return the next prime number using
@@ -87,6 +107,13 @@ def pascals_triangle_gen() -> list:
     while(True):
         yield pascals_triangle(n)
         n += 1
+def pascals_triangle_gen_brent() -> list:
+    prev, new = [1], [1]
+    while(True):
+        yield new 
+        new = [1] + [ prev[i] + prev[i+1] for i, _ in enumerate(prev) if i < len(prev)-1 ] + [1]
+        prev = new
+
 
 # Execute Tests
 print("Factorial")
@@ -107,8 +134,8 @@ print(pascals_triangle(3))
 
 print("Prime")
 gen = next_prime()
-for _ in range(10): print(next(gen))
+for _ in range(1000): print(next(gen))
 
 print("Pascal Triangle Generator")
-gen = pascals_triangle_gen()
+gen = pascals_triangle_gen_brent()
 for _ in range(10): print(next(gen))

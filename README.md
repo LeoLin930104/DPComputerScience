@@ -111,7 +111,20 @@ File from classwork
 >     Introducing curses and downlaod
 >     Start writing own text adventure
 > ### File
+> + [function_exercises.py](function_exercises.py)
 > + [context.py](Text_Adventure/context.py)
+## 2020/11/13
+> ### Content
+>     Revise on the function homework.
+>     Continue on Text Adventure
+>     Wrote Function in Text Adventure that uses Curses
+>     Uses functions to make story line
+>     Uses Up/Down Key Strokes to make options in Menu
+>     Seperates Function of Drawing Menu and Calling consecutive story line
+>     Reconnects to the idea that function only to one thing
+> ### File
+> + [context.py](Text_Adventure/context.py)
+> + [story.py](Text_Adventure/story.py)
 
 
 

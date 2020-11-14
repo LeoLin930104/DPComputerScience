@@ -2,10 +2,10 @@ import context as c
 
 def main(ctx: dict) -> None:
     menu = {}
-    menu[c.PROMPT] = """Traveller, you woke up in a \"Mysterious Forest\". Since you have been travelling, you are quite hungry and thursty
-   You see fruits that you have never seen before growing on the tree. 
+    menu[c.PROMPT] = """Traveller, you woke up in the \"Mysterious Forest\". Since you have been travelling, you are quite hungry and thursty
+   You see fruits that you have never seen before growing on a tree. 
    You see a pond, it contains water-like liquid that is luminating.
-   You see a sign in front of a clear path that says \"Leave this place Before Dawn!\"
+   You see a sign in front of a clear path that says \"LEAVE BEFORE DAWN!\"
    What will you do?"""
     options = [
         c.create_menu_item(1, "Eat the \"Mysterious Fruit\"...", main_fruit),
@@ -67,7 +67,6 @@ def main_fruit_eat_water_eat(ctx: dict) -> None:
     c.draw_menu(ctx, menu)
 
 def main_fruit_eat_water_path(ctx: dict) -> None:
-    menu = {}
     menu[c.PROMPT] = """In your sight, the path becomes longer, longer, and longer...
    In you mind, the time becomes slower, slower, and slower...
    Without a sight of anyone, you comes to an \"Eternal Sleep\"..."""

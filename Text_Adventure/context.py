@@ -7,7 +7,8 @@ SCREEN = "screen"
 POS = "position"
 TEXT = "text"
 CALLBACK = "callback"
-STATUS_FORMAT = "Press Up/Down to Control | Press Enter to Select | Press ESC to Leave | Key: {:>5} | Active: {:>2}"
+STATUS_FORMAT = " Press Up/Down to Control | Press Enter to Select | Press ESC to Leave | Key: {:>5} | Active: {:>2}"
+TITLE = "Mysterious Forest"
 
 def create_menu_item(pos:int, text: str, callback: callable) -> dict:
     menu_item = { POS: pos, TEXT: text, CALLBACK: callback }
@@ -40,19 +41,25 @@ def draw_menu(ctx: dict, menu: dict) -> None:
     active = 0
 
     # Event loop. Listens for key presses from the user
-    while(key != 27):
+    while(key != 27 and key != 113):
 
         # Later insert key actions
         if  ( key == 456 or key == 115 ): active = (active + 1) % len(options)
-        elif( key == 450 or key == 119 ): active = (active - 1) % len(options) 
-        elif( key == 10 ): return handle_click(ctx, menu, active)
+        elif( key == 450 or key == 119 ): active = (active - 1) % len(options)
+        elif( key == 10  or key == 101 ): return handle_click(ctx, menu, active)
             
         # Clear Screen
         scr.clear()
         h, w = scr.getmaxyx()
 
+        # Add Title
+        scr.attron(curses.color_pair(4))
+        scr.addstr(1, 0, ' ' * (w-1))
+        scr.addstr(1, 2, TITLE)
+        scr.attroff(curses.color_pair(4))
+
         # Add text prompt
-        scr.addstr(2, 3, prompt)
+        scr.addstr(2, 4, prompt)
         
         # Draw Menu Here
         for idx, option in enumerate(options):
@@ -63,10 +70,10 @@ def draw_menu(ctx: dict, menu: dict) -> None:
             else: scr.addstr(8 + idx, 8, option[TEXT])
 
         # Draw Status Bar
-        status_string = STATUS_FORMAT.format(active+1, key, active+1)
+        status_string = STATUS_FORMAT.format(key, active+1)
         scr.attron(curses.color_pair(4))
+        scr.addstr(h-1, 0, ' ' * (w-1))
         scr.addstr(h-1, 0, status_string)
-        scr.addstr(h-1, len(status_string), ' ' * (w - len(status_string) - 1))
         scr.attroff(curses.color_pair(4))
         scr.move(h-1,w-2)
         scr.refresh()

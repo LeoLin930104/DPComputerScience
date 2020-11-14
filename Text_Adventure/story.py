@@ -1,4 +1,5 @@
 import context as c
+import sys
 
 def main(ctx: dict) -> None:
     menu = {}
@@ -246,12 +247,17 @@ def restart_congradulations(ctx: dict) -> None:
     Program: Leo Lin,
     Yes, It is short, and I am the only one who wrote this thing, Now:"""
     options = [
-        c.create_menu_item(1, "Restart...", main),
-        c.create_menu_item(2, "Exit...", None)
+    c.create_menu_item(1, "Restart...", main),
+    c.create_menu_item(2, "Exit...", None)
     ]
     menu[c.OPTIONS] = options
     c.draw_menu(ctx, menu)
 
 if __name__ == "__main__":
+    sys.setrecursionlimit(c.RECURSION_LIMIT)
     context = c.init()
-    main(context)
+    try:
+        main(context)
+    except RecursionError as e:
+        c.play_too_long(context)
+    

@@ -1,5 +1,6 @@
 import curses
 
+RECURSION_LIMIT = 100
 MENU = "menu"
 OPTIONS = "options"
 PROMPT = "prompt"
@@ -80,3 +81,35 @@ def draw_menu(ctx: dict, menu: dict) -> None:
 
         # Get Next Key
         key = scr.getch()
+
+def play_too_long(ctx):
+    scr = ctx[SCREEN]
+    scr.clear()
+    key = 0
+    active = 0
+    h, w = scr.getmaxyx()
+
+    scr.attron(curses.color_pair(4))
+    scr.addstr(1, 0, ' ' * (w-1))
+    scr.addstr(1, 2, TITLE)
+    scr.attroff(curses.color_pair(4))
+    
+    scr.attron(curses.color_pair(2))
+    scr.addstr(3, 8, "You have been playing for too long!!!")
+    scr.addstr(4, 8, "But thanks for the participation in \"Mesterious Forest\".")
+    scr.attroff(curses.color_pair(2))
+    scr.addstr(6, 8, "Credit:")
+    scr.addstr(7, 12, "Story: Leo Lin,")
+    scr.addstr(8, 12, "Program: Leo Lin,")
+    scr.addstr(9, 8, "Yes, It is short, and I am the only one who wrote this thing, Now:")
+    scr.addstr(10, 8, "Press any key to exit the game...")
+    
+    status_string = STATUS_FORMAT.format(key, active+1)
+    scr.attron(curses.color_pair(4))
+    scr.addstr(h-1, 0, ' ' * (w-1))
+    scr.addstr(h-1, 0, status_string)
+    scr.attroff(curses.color_pair(4))
+    scr.move(h-1,w-2)
+    scr.refresh()
+    # Get Next Key
+    key = scr.getch()

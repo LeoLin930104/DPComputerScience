@@ -1,6 +1,13 @@
 import curses
 
-RECURSION_LIMIT = 100
+RECURSION_LIMIT = 0
+NAME = ""
+TITLE = ""
+STORY, PROGRAM = "Story", "Program"
+CREDIT = {
+    STORY: "",
+    PROGRAM: ""
+}
 MENU = "menu"
 OPTIONS = "options"
 PROMPT = "prompt"
@@ -8,8 +15,8 @@ SCREEN = "screen"
 POS = "position"
 TEXT = "text"
 CALLBACK = "callback"
+ENTER_NAME_FORMAT = "Please Enter Your Name with KeyBoard | Key: {:>5}"
 STATUS_FORMAT = " Press Up/Down to Control | Press Enter to Select | Press ESC to Leave | Key: {:>5} | Active: {:>2}"
-TITLE = "Mysterious Forest"
 
 def create_menu_item(pos:int, text: str, callback: callable) -> dict:
     menu_item = { POS: pos, TEXT: text, CALLBACK: callback }
@@ -56,7 +63,7 @@ def draw_menu(ctx: dict, menu: dict) -> None:
         # Add Title
         scr.attron(curses.color_pair(4))
         scr.addstr(1, 0, ' ' * (w-1))
-        scr.addstr(1, 2, TITLE)
+        scr.addstr(1, 2, TITLE + " - " + NAME)
         scr.attroff(curses.color_pair(4))
 
         # Add text prompt
@@ -82,7 +89,7 @@ def draw_menu(ctx: dict, menu: dict) -> None:
         # Get Next Key
         key = scr.getch()
 
-def play_too_long(ctx):
+def play_too_long(ctx) -> None:
     scr = ctx[SCREEN]
     scr.clear()
     key = 0
@@ -96,13 +103,12 @@ def play_too_long(ctx):
     
     scr.attron(curses.color_pair(2))
     scr.addstr(3, 8, "You have been playing for too long!!!")
-    scr.addstr(4, 8, "But thanks for the participation in \"Mesterious Forest\".")
+    scr.addstr(4, 8, "But thanks for the participation in \"" + TITLE + "\".")
     scr.attroff(curses.color_pair(2))
     scr.addstr(6, 8, "Credit:")
-    scr.addstr(7, 12, "Story: Leo Lin,")
-    scr.addstr(8, 12, "Program: Leo Lin,")
-    scr.addstr(9, 8, "Yes, It is short, and I am the only one who wrote this thing, Now:")
-    scr.addstr(10, 8, "Press any key to exit the game...")
+    scr.addstr(7, 12, STORY + ": " + CREDIT[STORY])
+    scr.addstr(8, 12, PROGRAM + ": " + CREDIT[PROGRAM])
+    scr.addstr(9, 8, "Press any key to exit the game...")
     
     status_string = STATUS_FORMAT.format(key, active+1)
     scr.attron(curses.color_pair(4))
@@ -113,3 +119,49 @@ def play_too_long(ctx):
     scr.refresh()
     # Get Next Key
     key = scr.getch()
+
+def enter_name(ctx) -> str:
+    scr = ctx[SCREEN]
+    scr.clear()
+    key = 0
+    h, w = scr.getmaxyx()
+    name = ""
+    
+    while(key != 10 and key != 27):
+        scr.clear()
+        scr.attron(curses.color_pair(4))
+        scr.addstr(1, 0, ' ' * (w-1))
+        scr.addstr(1, 2, TITLE)
+        scr.attroff(curses.color_pair(4))
+    
+        if(len(name) > 20):
+            scr.addstr(3, 8, "Traveller, you have a name too long...")
+            scr.addstr(4, 8, "Mind if you re-enter your name?")
+            scr.addstr(5, 8, "Press any key to continue...")
+            key = scr.getch()
+            key = 0
+            name = ""
+            continue
+        else:
+            scr.addstr(3, 8, "Traveller, Please enter your name Below: ")
+            scr.addstr(4, 12, "Name: {}".format(name))
+            scr.attron(curses.color_pair(3))
+            scr.addstr(4, 12 + 6 + len(name), " ")
+            scr.attroff(curses.color_pair(3))
+            scr.addstr(5, 8, "Press enter to comfirm...")
+    
+        enter_name_string = ENTER_NAME_FORMAT.format(key)
+        scr.attron(curses.color_pair(4))
+        scr.addstr(h-1, 0, ' ' * (w-1))
+        scr.addstr(h-1, 0, enter_name_string)
+        scr.attroff(curses.color_pair(4))
+        scr.move(h-1,w-2)
+        scr.refresh()
+        # Get Next Key
+        key = scr.getch()
+        if( (key >= 97 and key <= 122) or (key >= 65 and key <= 90) or (len(name) > 0 and key == 32)):
+            name += chr(key)
+        elif(key == 8):
+            if(len(name) > 0): name = name[:len(name)-1]
+
+    return name

@@ -1,6 +1,19 @@
 import context as c
 import sys
 
+title = "Mysterious Forest"
+recursion_limit = 100
+story = "Leo Lin"
+program = "Leo Lin"
+gameover_format = """Sad, Solemn, and Sorry. Still, you need to watch the Credit:
+    {}: {},
+    {}: {},
+    Yes, It is short, and I am the only one who wrote this thing, Now:"""
+congradulations_format = """You are the Champion. You are the One. You are watching the Credit:
+    {}: {},
+    {}: {},
+    Yes, It is short, and I am the only one who wrote this thing, Now:"""
+
 def main(ctx: dict) -> None:
     menu = {}
     menu[c.PROMPT] = """Traveller, you woke up in the \"Mysterious Forest\". Since you have been travelling, you are quite hungry and thursty
@@ -93,7 +106,6 @@ def main_fruit_water(ctx: dict) -> None:
 
 def main_fruit_path(ctx: dict) -> None:
     main_sign(ctx)
-
 
 def main_water(ctx: dict) -> None:
     menu = {}
@@ -229,10 +241,7 @@ def main_sign_search(ctx: dict) -> None:
 
 def restart_gameover(ctx: dict) -> None:
     menu = {}
-    menu[c.PROMPT] = """Sad, Solemn, and Sorry. Still, you need to watch the Credit:
-    Story: Leo Lin,
-    Program: Leo Lin,
-    Yes, It is short, and I am the only one who wrote this thing, Now:"""
+    menu[c.PROMPT] = gameover_format.format(c.STORY, c.CREDIT[c.STORY], c.PROGRAM, c.CREDIT[c.PROGRAM])
     options = [
         c.create_menu_item(1, "Restart...", main),
         c.create_menu_item(2, "Exit...", None)
@@ -242,22 +251,26 @@ def restart_gameover(ctx: dict) -> None:
 
 def restart_congradulations(ctx: dict) -> None:
     menu = {}
-    menu[c.PROMPT] = """You are the Champion. You are the One. You are watching the Credit:
-    Story: Leo Lin,
-    Program: Leo Lin,
-    Yes, It is short, and I am the only one who wrote this thing, Now:"""
+    menu[c.PROMPT] = congradulations_formatt.format(c.STORY, c.CREDIT[c.STORY], c.PROGRAM, c.CREDIT[c.PROGRAM])
     options = [
-    c.create_menu_item(1, "Restart...", main),
-    c.create_menu_item(2, "Exit...", None)
+        c.create_menu_item(1, "Restart...", main),
+        c.create_menu_item(2, "Exit...", None)
     ]
     menu[c.OPTIONS] = options
     c.draw_menu(ctx, menu)
 
+def constructor(title: str, recursion_limit: int, story: str, program: str) -> None:
+    c.TITLE = title
+    c.RECURSION_LIMIT = recursion_limit
+    sys.setrecursionlimit(recursion_limit)
+    c.CREDIT[c.STORY] = story
+    c.CREDIT[c.PROGRAM] = program
+
 if __name__ == "__main__":
-    sys.setrecursionlimit(c.RECURSION_LIMIT)
     context = c.init()
     try:
+        constructor(title, recursion_limit, story, program)
+        c.NAME = c.enter_name(context)
         main(context)
     except RecursionError as e:
         c.play_too_long(context)
-    

@@ -251,7 +251,7 @@ def restart_gameover(ctx: dict) -> None:
 
 def restart_congradulations(ctx: dict) -> None:
     menu = {}
-    menu[c.PROMPT] = congradulations_formatt.format(c.STORY, c.CREDIT[c.STORY], c.PROGRAM, c.CREDIT[c.PROGRAM])
+    menu[c.PROMPT] = congradulations_format.format(c.STORY, c.CREDIT[c.STORY], c.PROGRAM, c.CREDIT[c.PROGRAM])
     options = [
         c.create_menu_item(1, "Restart...", main),
         c.create_menu_item(2, "Exit...", None)

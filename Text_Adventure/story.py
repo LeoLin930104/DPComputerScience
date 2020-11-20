@@ -24,10 +24,10 @@ def main(ctx: dict) -> None:
     options = [
         c.create_menu_item(1, "Eat the \"Mysterious Fruit\"...", main_fruit),
         c.create_menu_item(2, "Drink the \"Luminous Water\"...", main_water),
-        c.create_menu_item(3, "Follow the \"Sign\"...", main_sign),
+        c.create_menu_item(3, "Follow the \"Sign\"...", main_sign)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def main_fruit(ctx: dict) -> None:
     menu = {}
@@ -41,7 +41,7 @@ def main_fruit(ctx: dict) -> None:
         c.create_menu_item(3, "Without the fruit, go down the \"Path\"", main_fruit_path)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def main_fruit_eat(ctx: dict) -> None:
     menu = {}
@@ -54,7 +54,7 @@ def main_fruit_eat(ctx: dict) -> None:
         c.create_menu_item(3, "Go down the \"Path\"...", main_fruit_eat_path)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def main_fruit_eat_water(ctx: dict) -> None:
     menu = {}
@@ -67,7 +67,7 @@ def main_fruit_eat_water(ctx: dict) -> None:
         c.create_menu_item(2, "Run down the path and search for \"Help\"...", main_fruit_eat_water_path)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def main_fruit_eat_water_eat(ctx: dict) -> None:
     menu = {}
@@ -78,7 +78,7 @@ def main_fruit_eat_water_eat(ctx: dict) -> None:
         c.create_menu_item(1, "Game Over...", restart_gameover)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def main_fruit_eat_water_path(ctx: dict) -> None:
     menu[c.PROMPT] = """In your sight, the path becomes longer, longer, and longer...
@@ -88,7 +88,7 @@ def main_fruit_eat_water_path(ctx: dict) -> None:
         c.create_menu_item(1, "Game Over...", restart_gameover)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)  
+    return c.draw_menu(ctx, menu)  
 
 def main_fruit_eat_path(ctx: dict) -> None:
     menu = {}
@@ -99,13 +99,13 @@ def main_fruit_eat_path(ctx: dict) -> None:
         c.create_menu_item(1, "Congradulations.", restart_congradulations)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu) 
+    return c.draw_menu(ctx, menu) 
 
 def main_fruit_water(ctx: dict) -> None:
-    main_water(ctx)
+    return main_water(ctx)
 
 def main_fruit_path(ctx: dict) -> None:
-    main_sign(ctx)
+    return main_sign(ctx)
 
 def main_water(ctx: dict) -> None:
     menu = {}
@@ -118,7 +118,7 @@ def main_water(ctx: dict) -> None:
         c.create_menu_item(2, "Run down the path and search for \"Help\"...", main_water_help)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def main_water_fruit(ctx: dict) -> None:
     menu = {}
@@ -132,7 +132,7 @@ def main_water_fruit(ctx: dict) -> None:
         c.create_menu_item(2, "Collect the mysterious fruit and prepare for the arrival of the \"Night\"...", main_water_fruit_night)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def main_water_fruit_path(ctx: dict) -> None:
     menu = {}
@@ -143,7 +143,7 @@ def main_water_fruit_path(ctx: dict) -> None:
         c.create_menu_item(1, "Congradulations.", restart_congradulations),
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def main_water_fruit_night(ctx: dict) -> None:
     menu = {}
@@ -154,7 +154,7 @@ def main_water_fruit_night(ctx: dict) -> None:
         c.create_menu_item(1, "Game Over...", restart_gameover),
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def main_water_help(ctx: dict) -> None:
     menu = {}
@@ -165,7 +165,7 @@ def main_water_help(ctx: dict) -> None:
         c.create_menu_item(1, "Game Over...", restart_gameover)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)   
+    return c.draw_menu(ctx, menu)   
 
 def main_sign(ctx: dict) -> None:
     menu = {}
@@ -179,7 +179,7 @@ def main_sign(ctx: dict) -> None:
         c.create_menu_item(3, "Try to search for food from \"Surroundings\"...", main_sign_search)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def main_sign_path(ctx: dict) -> None:
     menu = {}
@@ -190,7 +190,7 @@ def main_sign_path(ctx: dict) -> None:
         c.create_menu_item(1, "Game Over...", restart_gameover)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def main_sign_fruit(ctx: dict) -> None:
     menu = {}
@@ -203,7 +203,7 @@ def main_sign_fruit(ctx: dict) -> None:
         c.create_menu_item(2, "Collect the mysterious fruit and prepare for the arrival of the \"Night\"...", main_sign_fruit_night)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def main_sign_fruit_path(ctx: dict) -> None:
     menu = {}
@@ -214,7 +214,7 @@ def main_sign_fruit_path(ctx: dict) -> None:
         c.create_menu_item(1, "Game Over...", restart_gameover),
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def main_sign_fruit_night(ctx: dict) -> None:
     menu = {}
@@ -225,7 +225,7 @@ def main_sign_fruit_night(ctx: dict) -> None:
         c.create_menu_item(1, "Game Over...", restart_gameover),
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def main_sign_search(ctx: dict) -> None:
     menu = {}
@@ -237,7 +237,7 @@ def main_sign_search(ctx: dict) -> None:
         c.create_menu_item(1, "Congradulations.", restart_congradulations),
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def restart_gameover(ctx: dict) -> None:
     menu = {}
@@ -247,7 +247,7 @@ def restart_gameover(ctx: dict) -> None:
         c.create_menu_item(2, "Exit...", None)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def restart_congradulations(ctx: dict) -> None:
     menu = {}
@@ -257,7 +257,7 @@ def restart_congradulations(ctx: dict) -> None:
         c.create_menu_item(2, "Exit...", None)
     ]
     menu[c.OPTIONS] = options
-    c.draw_menu(ctx, menu)
+    return c.draw_menu(ctx, menu)
 
 def constructor(title: str, recursion_limit: int, story: str, program: str) -> None:
     c.TITLE = title
@@ -266,11 +266,17 @@ def constructor(title: str, recursion_limit: int, story: str, program: str) -> N
     c.CREDIT[c.STORY] = story
     c.CREDIT[c.PROGRAM] = program
 
-if __name__ == "__main__":
+def start():
     context = c.init()
     try:
         constructor(title, recursion_limit, story, program)
         c.NAME = c.enter_name(context)
-        main(context)
+        callback = main(context)
+        while(callback != None): callback = callback(context)
     except RecursionError as e:
         c.play_too_long(context)
+
+if __name__ == "__main__":
+    start()
+    
+   

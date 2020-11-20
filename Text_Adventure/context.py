@@ -1,4 +1,5 @@
 import curses
+import time
 
 RECURSION_LIMIT = 0
 NAME = ""
@@ -22,10 +23,6 @@ def create_menu_item(pos:int, text: str, callback: callable) -> dict:
     menu_item = { POS: pos, TEXT: text, CALLBACK: callback }
     return menu_item
 
-def handle_click(ctx: list, menu: dict, active: int) -> None:
-    options = menu[OPTIONS]
-    if ( options[active]and options[active][CALLBACK] ): return options[active][CALLBACK](ctx)
-
 def init() -> dict:
     context = {}
     context[SCREEN] = curses.initscr()
@@ -47,14 +44,15 @@ def draw_menu(ctx: dict, menu: dict) -> None:
     options.sort(key = lambda x: x[POS])
     key = 0
     active = 0
+    curses.noecho()
 
     # Event loop. Listens for key presses from the user
     while(key != 27 and key != 113):
 
         # Later insert key actions
-        if  ( key == 456 or key == 115 ): active = (active + 1) % len(options)
-        elif( key == 450 or key == 119 ): active = (active - 1) % len(options)
-        elif( key == 10  or key == 101 ): return handle_click(ctx, menu, active)
+        if  ( key == 456 or key == 115 or key == curses.KEY_DOWN): active = (active + 1) % len(options)
+        elif( key == 450 or key == 119 or key == curses.KEY_UP): active = (active - 1) % len(options)
+        elif( key == 10  or key == 101 ): return options[active][CALLBACK]
             
         # Clear Screen
         scr.clear()
@@ -95,6 +93,7 @@ def play_too_long(ctx) -> None:
     key = 0
     active = 0
     h, w = scr.getmaxyx()
+    curses.noecho()
 
     scr.attron(curses.color_pair(4))
     scr.addstr(1, 0, ' ' * (w-1))
@@ -126,7 +125,7 @@ def enter_name(ctx) -> str:
     key = 0
     h, w = scr.getmaxyx()
     name = ""
-    
+    curses.noecho()
     while((key != 10 or len(name) == 0) and key != 27):
         scr.clear()
         scr.attron(curses.color_pair(4))
@@ -176,3 +175,5 @@ def enter_name(ctx) -> str:
             if(len(name) > 0): name = name[:len(name)-1]
 
     return name
+
+    

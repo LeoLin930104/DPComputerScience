@@ -125,6 +125,19 @@ File from classwork
 > ### File
 > + [context.py](Text_Adventure/context.py)
 > + [story.py](Text_Adventure/story.py)
+## 2020/11/20
+> ### Content
+> #### Text Adventure
+>     Recursive Functions used on Text Adventure, causing stack overflowing
+>     Return before calling next function solves the stacking problem.
+>     Presents Written stories.
+> #### Object Orientation
+>     Start with introduction to Object Orientation in Python
+>     Wrote Example Class Circle
+> ### File
+> + [context.py](Text_Adventure/context.py)
+> + [story.py](Text_Adventure/story.py)
+> + [Circle.py](Objects/Circle.py)
 
 
 

@@ -138,7 +138,15 @@ File from classwork
 > + [context.py](Text_Adventure/context.py)
 > + [story.py](Text_Adventure/story.py)
 > + [Circle.py](Objects/Circle.py)
-
+## 2020/11/27
+> ### Content
+>     Writing other class: Rectangle, RegularPolygon
+>     Annotation to Property, Setter
+>     Modify default functions
+> ### File
+> + [RegularPolygon.py](Objects/RegularPolygon.py)
+> + [Rectangle.py](Objects/Rectangle.py)
+> + [Circle.py](Objects/Circle.py)
 
 
 

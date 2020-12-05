@@ -147,6 +147,19 @@ File from classwork
 > + [RegularPolygon.py](Objects/RegularPolygon.py)
 > + [Rectangle.py](Objects/Rectangle.py)
 > + [Circle.py](Objects/Circle.py)
+## 2020/12/04
+> ### Content
+>     Discussing about what is our big project Going to be,
+>     There were options of:
+>     A Store System, managaing the Items...
+>     A Bug Tracking System, uses network that keeps track of running programs...
+>     A Social Media, an application form of Facebook, Instagram, Snapchat, Twitter...
+>     An IDOS, this is a System that our School uses, we want to make it better...
+>     A ManageBac, another System that out School uses, we want to make it better...
+>     
+>     As a result, we have chosen to make our own Social Media..............ExchangeGram
+> ### File
+> + [ExchangeGram](ExchangeGram)
 
 
 

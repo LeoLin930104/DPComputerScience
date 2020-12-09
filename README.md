@@ -160,6 +160,13 @@ File from classwork
 >     As a result, we have chosen to make our own Social Media..............ExchangeGram
 > ### File
 > + [ExchangeGram](ExchangeGram)
+## 2020/12/09
+> ### Content
+>     To continue to program, there was a brief introduction to extension
+>     classes extend super class to be able utilize super class with variation of its own.
+>     Short examnple of Pentagon as child class of RegularPolygon.
+> ### File
+> + [Objects/Pentagon.py](Objects/Pentagon.py)
 
 
 

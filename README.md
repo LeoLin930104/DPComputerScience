@@ -167,6 +167,17 @@ File from classwork
 >     Short examnple of Pentagon as child class of RegularPolygon.
 > ### File
 > + [Objects/Pentagon.py](Objects/Pentagon.py)
+## 2020/12/11
+> ### Content
+>     We initialized a configuration file that can help us luanch the correct file, start client, wherever we are in the ExchangeGram folder.
+>     We created our application file where are write our constructor and view initializer.
+>     The initializer itself calls a sign_in file that construct all the objects need to fill the application window, pack up the windows and items and return it to the application in order to start_client.
+> ### File
+> + [ExchangeGram/.vscode/launch.json](ExchangeGram/.vscode/launch.json)
+> + [ExchangeGram/start_client.py](ExchangeGram/start_client.py)
+> + [ExchangeGram/client/app.py](ExchangeGram/client/app.py)
+> + [ExchangeGram/client/view/sign_in.py](ExchangeGram/client/view/sign_in.py)
+> + [ExchangeGram/client/view/theme.py](ExchangeGram/client/view/theme.py)
 
 
 

@@ -244,7 +244,7 @@ def restart_gameover(ctx: dict) -> None:
     menu[c.PROMPT] = gameover_format.format(c.STORY, c.CREDIT[c.STORY], c.PROGRAM, c.CREDIT[c.PROGRAM])
     options = [
         c.create_menu_item(1, "Restart...", main),
-        c.create_menu_item(2, "Exit...", None)
+        c.create_menu_item(2, "Exit...", c.terminate)
     ]
     menu[c.OPTIONS] = options
     return c.draw_menu(ctx, menu)
@@ -254,7 +254,7 @@ def restart_congradulations(ctx: dict) -> None:
     menu[c.PROMPT] = congradulations_format.format(c.STORY, c.CREDIT[c.STORY], c.PROGRAM, c.CREDIT[c.PROGRAM])
     options = [
         c.create_menu_item(1, "Restart...", main),
-        c.create_menu_item(2, "Exit...", None)
+        c.create_menu_item(2, "Exit...", c.terminate)
     ]
     menu[c.OPTIONS] = options
     return c.draw_menu(ctx, menu)
@@ -266,7 +266,7 @@ def constructor(title: str, recursion_limit: int, story: str, program: str) -> N
     c.CREDIT[c.STORY] = story
     c.CREDIT[c.PROGRAM] = program
 
-def start():
+def init():
     context = c.init()
     try:
         constructor(title, recursion_limit, story, program)
@@ -277,6 +277,6 @@ def start():
         c.play_too_long(context)
 
 if __name__ == "__main__":
-    start()
+    init()
     
    

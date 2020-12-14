@@ -176,4 +176,6 @@ def enter_name(ctx) -> str:
 
     return name
 
-    
+def terminate(ctx: dict):
+    scr = ctx[SCREEN]
+    scr.clear()

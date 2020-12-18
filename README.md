@@ -178,7 +178,23 @@ File from classwork
 > + [ExchangeGram/client/app.py](ExchangeGram/client/app.py)
 > + [ExchangeGram/client/view/sign_in.py](ExchangeGram/client/view/sign_in.py)
 > + [ExchangeGram/client/view/theme.py](ExchangeGram/client/view/theme.py)
-
+## 2020/12/18
+> ### Content
+>     We have finished the Sign in View Page, it contains: 
+>     - A Username Label, A Username Entry,
+>     - A Password Label, A Password Entry,
+>     - A Sign in Button, A Cancel Button,
+>     - A Register Label, A Register Button.
+>     
+>     We have finished the Register Page, it contains:
+>     - A Email Label, A Email Entry, A Email Error Label,
+>     - A Username Label, A Username Entry, A Username Error Label,
+>     - A Password Label, A Password Entry, 
+>     - A Confirm Label, A Confirm Entry, A Password Error Label,
+>     - A Register Button, A Cancel Button.
+> ### File
+> + [ExchangeGram/client/view/sign_in.py](ExchangeGram/client/view/sign_in.py)
+> + [ExchangeGram/client/view/register.py](ExchangeGram/client/view/register.py)
 
 
     

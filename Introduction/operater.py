@@ -23,5 +23,5 @@ print("{} + {} = {}".format(type(a), type(b), type(result)))
 
 a, b = 6, "4"
 result = a + int(b)
-print("{} + {} = {}".format(a, b,  result))
+print("{} + {} = {}".format(a, b, result))
 print("{} + {} = {}".format(type(a), type(b), type(result)))

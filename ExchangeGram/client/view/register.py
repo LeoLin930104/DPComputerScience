@@ -3,15 +3,24 @@ from tkinter.ttk import Frame, Label, Entry, Button
 from .theme import PADX, PADY, ENTRY_WIDTH, LABEL_WIDTH
 from tkinter import font
 
+
 class Register(Frame):
     def __init__(self, master):
         super().__init__(master=master)
         self.layout_components()
         # Setup Callbacks
+        self.show_sign_in: Callable = None
+        self.sign_in: Callable = None
+        self.validate_email: Callable = None
+        self.validate_username: Callable = None
+        self.validate_password: Callable = None
+        self.register: Callable = None
+        # Refocus to Email Entry
+        self.email_Entry.focus()
 
     def layout_components(self):
-        self.pack(fill = tk.BOTH, expand = False, padx = PADX, pady = PADY)
-        error_font = font.Font(family = "Times New Roman", size = 8)
+        self.pack(fill=tk.BOTH, expand=False, padx=PADX, pady=PADY)
+        error_font = font.Font(family="Ariel", size=8)
 
         # Variables
         self.username = tk.StringVar()
@@ -27,62 +36,183 @@ class Register(Frame):
         self.passcnfm.set("")
 
         # Email Row
-        eFrame = Frame(self)
-        eFrame.pack(fill = tk.X)
-        eLabel = Label(eFrame, text = "Email:", width = LABEL_WIDTH)
-        eLabel.pack(side = tk.LEFT, padx = PADX, pady = PADY)
-        self.eEntry = Entry(eFrame, width = ENTRY_WIDTH, textvariable = self.email)
-        self.eEntry.pack(fill = tk.X, padx = PADX, pady = PADY, expand = True)
+        email_Frame = Frame(self)
+        email_Frame.pack(fill=tk.X)
+        email_Label = Label(email_Frame, text="Email:", width=LABEL_WIDTH)
+        email_Label.pack(side=tk.LEFT, padx=PADX, pady=PADY)
+        self.email_Entry = Entry(
+            email_Frame, width=ENTRY_WIDTH, textvariable=self.email
+        )
+        self.email_Entry.pack(fill=tk.X, padx=PADX, pady=PADY, expand=True)
+        self.email_Entry.bind("<FocusOut>", self._validate_email)
         # Email Error Row
-        e_eFrame = Frame(self)
-        e_eFrame.pack(fill = tk.X)
-        e_eLabel = Label(e_eFrame, text = "", foreground = "red", font = error_font)
-        e_eLabel.pack(side = tk.LEFT, anchor = "center", expand = True, padx = PADX, pady = PADY)
+        email_errFrame = Frame(self)
+        email_errFrame.pack(fill=tk.X)
+        self.email_errLabel = Label(
+            email_errFrame, text="", foreground="red", font=error_font
+        )
+        self.email_errLabel.pack(
+            side=tk.LEFT, anchor="center", expand=True, padx=PADX, pady=PADY
+        )
 
         # Username Row
-        uFrame = Frame(self)
-        uFrame.pack(fill = tk.X)
-        uLabel = Label(uFrame, text = "Username:", width = LABEL_WIDTH)
-        uLabel.pack(side = tk.LEFT, padx = PADX, pady = PADY)
-        self.uEntry = Entry(uFrame, width = ENTRY_WIDTH, textvariable = self.username)
-        self.uEntry.pack(fill = tk.X, padx = PADX, pady = PADY, expand = True)
+        user_Frame = Frame(self)
+        user_Frame.pack(fill=tk.X)
+        user_Label = Label(user_Frame, text="Username:", width=LABEL_WIDTH)
+        user_Label.pack(side=tk.LEFT, padx=PADX, pady=PADY)
+        self.user_Entry = Entry(
+            user_Frame, width=ENTRY_WIDTH, textvariable=self.username
+        )
+        self.user_Entry.pack(fill=tk.X, padx=PADX, pady=PADY, expand=True)
+        self.user_Entry.bind("<FocusOut>", self._validate_username)
+
         # Username Error Row
-        u_eFrame = Frame(self)
-        u_eFrame.pack(fill = tk.X)
-        u_eLabel = Label(u_eFrame, text = "", foreground = "red", font = error_font)
-        u_eLabel.pack(side = tk.LEFT, anchor = "center", expand = True, padx = PADX, pady = PADY)
+        user_errFrame = Frame(self)
+        user_errFrame.pack(fill=tk.X)
+        self.user_errLabel = Label(
+            user_errFrame, text="", foreground="red", font=error_font
+        )
+        self.user_errLabel.pack(
+            side=tk.LEFT, anchor="center", expand=True, padx=PADX, pady=PADY
+        )
 
         # Original Password Row
-        p_oFrame = Frame(self)
-        p_oFrame.pack(fill = tk.X)
-        p_oLabel = Label(p_oFrame, text = "Password:", width = LABEL_WIDTH)
-        p_oLabel.pack(side = tk.LEFT, padx = PADX, pady = PADY)
-        self.p_oEntry = Entry(p_oFrame, width = ENTRY_WIDTH, textvariable = self.password, show = "*")
-        self.p_oEntry.pack(fill = tk.X, padx = PADX, pady = PADY, expand = True)
+        pass_Frame = Frame(self)
+        pass_Frame.pack(fill=tk.X)
+        pass_Label = Label(pass_Frame, text="Password:", width=LABEL_WIDTH)
+        pass_Label.pack(side=tk.LEFT, padx=PADX, pady=PADY)
+        self.pass_Entry = Entry(
+            pass_Frame, width=ENTRY_WIDTH, textvariable=self.password, show="*"
+        )
+        self.pass_Entry.pack(fill=tk.X, padx=PADX, pady=PADY, expand=True)
+        self.pass_Entry.bind("<FocusOut>", self._validate_password)
         # Confirming Password Row
-        p_cFrame = Frame(self)
-        p_cFrame.pack(fill = tk.X)
-        p_cLabel = Label(p_cFrame, text = "Confirm:", width = LABEL_WIDTH)
-        p_cLabel.pack(side = tk.LEFT, padx = PADX, pady = PADY)
-        self.p_cEntry = Entry(p_cFrame, width = ENTRY_WIDTH, textvariable = self.passcnfm, show = "*")
-        self.p_cEntry.pack(fill = tk.X, padx = PADX, pady = PADY, expand = True)
+        pass_cnfmFrame = Frame(self)
+        pass_cnfmFrame.pack(fill=tk.X)
+        pass_cnfmLabel = Label(pass_cnfmFrame, text="Confirm:", width=LABEL_WIDTH)
+        pass_cnfmLabel.pack(side=tk.LEFT, padx=PADX, pady=PADY)
+        self.pass_cnfmEntry = Entry(
+            pass_cnfmFrame, width=ENTRY_WIDTH, textvariable=self.passcnfm, show="*"
+        )
+        self.pass_cnfmEntry.pack(fill=tk.X, padx=PADX, pady=PADY, expand=True)
+        self.pass_cnfmEntry.bind("<FocusOut>", self._validate_confirm)
         # Password Error Row
-        p_eFrame = Frame(self)
-        p_eFrame.pack(fill = tk.X)
-        p_eLabel = Label(p_eFrame, text = "", foreground = "red", font = error_font)
-        p_eLabel.pack(side = tk.LEFT, anchor = "center", expand = True, padx = PADX, pady = PADY)
+        pass_errFrame = Frame(self)
+        pass_errFrame.pack(fill=tk.X)
+        self.pass_errLabel = Label(
+            pass_errFrame, text="", foreground="red", font=error_font
+        )
+        self.pass_errLabel.pack(
+            side=tk.LEFT, anchor="center", expand=True, padx=PADX, pady=PADY
+        )
 
-        # Sign in and Cancel Button Row
-        bFrame = Frame(self)
-        bFrame.pack(fill = tk.X)
-        cButton = Button(bFrame, text = "Cancel", command = self.cancel)
-        cButton.pack(side = tk.RIGHT, padx = PADX, pady = PADY, expand = False)
-        sButton = Button(bFrame, text = "Sign in")
-        sButton.pack(side = tk.RIGHT, padx = PADX, pady = PADY, expand = False)
+        # Button Row
+        button_Frame = Frame(self)
+        button_Frame.pack(fill=tk.X)
+        # Cancel Button
+        cncl_Button = Button(button_Frame, text="Cancel", command=self.cancel)
+        cncl_Button.pack(side=tk.RIGHT, padx=PADX, pady=PADY, expand=False)
+        # Register Button
+        register_Button = Button(button_Frame, text="Register", state="disabled")
+        register_Button.pack(side=tk.RIGHT, padx=PADX, pady=PADY, expand=False)
+        # View Password Button
+        self.view_pass_Button = Button(
+            button_Frame, text="View Password", command=self.view_password
+        )
+        self.view_pass_Button.pack(side=tk.LEFT, padx=PADX, pady=PADY)
+
+        # Go Back Button Row
+        gbck_Frame = Frame(self)
+        gbck_Frame.pack(fill=tk.X)
+        gbck_Label = Label(gbck_Frame, text="Have an Account? Go Ahead and ")
+        gbck_Label.pack(side=tk.LEFT, padx=PADX, pady=PADY, expand=False)
+        gbck_Button = Button(gbck_Frame, text="Sign In", command=self._show_sign_in)
+        gbck_Button.pack(side=tk.RIGHT, padx=PADX, pady=PADY, expand=False)
 
     def cancel(self):
         self.email.set("")
         self.username.set("")
         self.password.set("")
         self.passcnfm.set("")
-        self.eEntry.focus()
+        self.email_Entry.focus()
+        self.email_errLabel.configure(text="")
+        self.user_errLabel.configure(text="")
+        self.pass_errLabel.configure(text="")
+
+    def view_password(self):
+        self.pass_Entry.configure(show="")
+        self.pass_cnfmEntry.configure(show="")
+        self.view_pass_Button.configure(command=self.hide_password)
+
+    def hide_password(self):
+        self.pass_Entry.configure(show="*")
+        self.pass_cnfmEntry.configure(show="*")
+        self.view_pass_Button.configure(command=self.view_password)
+
+    def _show_sign_in(self):
+        if self.show_sign_in is not None:
+            self.show_sign_in()
+            self.cancel()
+        else:
+            pass
+
+    def _validate_email(self, event):
+        email = self.email.get()
+        if len(email) == 0:
+            self.email_errLabel.configure(text="Email Must not be Empty...")
+        elif "@" not in email:
+            self.email_errLabel.configure(text="Invalide Email Format...")
+        elif self.validate_email is not None and not self.validate_email(email):
+            pass
+        else:
+            self.email_errLabel.configure(text="")
+
+    def _validate_username(self, event):
+        username = self.username.get()
+        if len(username) == 0:
+            self.user_errLabel.configure(text="Username Must not be Empty...")
+        elif self.validate_username is not None and not self.validate_username(
+            username
+        ):
+            pass
+        else:
+            self.user_errLabel.configure(text="")
+
+    def _validate_password(self, event):
+        password = self.password.get()
+        if len(password) == 0:
+            self.pass_errLabel.configure(text="Password Must Not be Empty...")
+        elif len(password) < 8:
+            self.pass_errLabel.configure(
+                text="Password Must be Longer than 8 Characters..."
+            )
+        elif self.validate_password is not None and not self.validate_password(
+            password
+        ):
+            pass
+        else:
+            self.pass_errLabel.configure(text="")
+
+    def _validate_confirm(self, event):
+        password = self.password.get()
+        passcnfm = self.passcnfm.get()
+        if len(passcnfm) == 0:
+            if len(password) != 0:
+                self.pass_errLabel.configure(
+                    text="Please Enter the Confirming Password..."
+                )
+            else:
+                self.pass_errLabel.configure(text="Password Must Not be Empty...")
+        elif len(passcnfm) < 8:
+            self.pass_errLabel.configure(
+                text="Confirming Password is also Longer than 8 Characters..."
+            )
+        elif self.validate_password is not None and not self.validate_password(
+            password
+        ):
+            pass
+        else:
+            self.pass_errLabel.configure(text="")
+
+    def _register(self):
+        pass

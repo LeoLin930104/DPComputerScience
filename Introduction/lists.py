@@ -1,9 +1,9 @@
-#List are like a collection of data that can be accessed through a single variable
+# List are like a collection of data that can be accessed through a single variable
 
 mylist = [1, 2, 3, 4, 5]
 print(mylist, type(mylist))
 
-# assign values 
+# assign values
 print(mylist[0])
 print(mylist[1])
 print(mylist[2])
@@ -22,12 +22,12 @@ for i, x in enumerate(mylist):
 
 # insert element
 mylist.append(6)
-mylist.append([1,2,3,4])
-mylist.extend([5,6,7,8])
+mylist.append([1, 2, 3, 4])
+mylist.extend([5, 6, 7, 8])
 print(mylist)
 
 # insert element with different types
-mylist = [1, 2.0 , "3", [4, 5], [6, "7", 8]]
+mylist = [1, 2.0, "3", [4, 5], [6, "7", 8]]
 mylist[4][2] = 9.0
 print(mylist)
 
@@ -36,26 +36,26 @@ length = len(mylist)
 print(length)
 
 # Repeated elements assign
-mylist = [0]*20
+mylist = [0] * 20
 print(mylist)
-mylist = [0,1]*10
+mylist = [0, 1] * 10
 print(mylist)
 
 # Statements
-mylist = ['a', 'b', 'c', 'd', 'c', 'a']
-exist = 'c' in mylist
+mylist = ["a", "b", "c", "d", "c", "a"]
+exist = "c" in mylist
 print(exist)
-print('c' not in mylist)
+print("c" not in mylist)
 
 # Index, find location
-location = mylist.index('c')
+location = mylist.index("c")
 print(location)
-location = mylist.index('c', 3)
+location = mylist.index("c", 3)
 
 # Insert/Remove element by Index
-mylist.insert(3, 'z')
+mylist.insert(3, "z")
 print(mylist)
-mylist.remove('b')
+mylist.remove("b")
 print(mylist)
 
 # Pop/Push
@@ -65,17 +65,17 @@ val = mylist.pop(3)
 print(val, mylist)
 
 # Count
-count = mylist.count('c')
+count = mylist.count("c")
 print(count)
 
 # Sort
 mylist.sort()
 print(mylist)
-mylist.sort(reverse = True)
+mylist.sort(reverse=True)
 print(mylist)
 
 # List from 1 to 10
-for i in range(1,11):
+for i in range(1, 11):
     mylist.append(i)
 print(mylist)
 
@@ -83,9 +83,9 @@ mylist = [i for i in range(1, 11)]
 print(mylist)
 mylist = [i for i in range(2, 22, 2)]
 print(mylist)
-mylist = [i*2 for i in range(1, 11)]
+mylist = [i * 2 for i in range(1, 11)]
 print(mylist)
-mylist = [i for i in range(1,21) if i % 2 == 0]
+mylist = [i for i in range(1, 21) if i % 2 == 0]
 print(mylist)
 mylist = [i for i in range(1, 11)]
 
@@ -93,7 +93,7 @@ mylist = [i for i in range(1, 11)]
 filtered = [i for i in mylist if i > 5]
 print(filtered)
 
-filtered = [i**3 for i in mylist]
+filtered = [i ** 3 for i in mylist]
 print(filtered)
 
 # Sublist: first inclusive, end exclusive

@@ -195,6 +195,18 @@ File from classwork
 > ### File
 > + [ExchangeGram/client/view/sign_in.py](ExchangeGram/client/view/sign_in.py)
 > + [ExchangeGram/client/view/register.py](ExchangeGram/client/view/register.py)
+## 2020/12/28
+> ### Content
+>     Introduction to Algorithms.
+>     Details to Sorting Algorithms: Bubble Sort, Selection Sort, Insertion Sort, Merge Sort.
+>     Practice Writing Sorting Algorithms...
+>     Details to Searching Algorithms: Linear Search, Binary Search.
+>     Practice Writing Searching Algorithms...
+>     Practice Writing miscellaneous algorithms...
+> ### File
+> + [Algorithms/sort.py](Algorithms/sort.py)
+> + [Algorithms/search.py](Algorithms/search.py)
+> + [Algorithms/miscellaneous.py](Algorithms/miscellaneous.py)
 
 
     

@@ -1,5 +1,5 @@
 # Basic Strings
-text = 'This is a string'
+text = "This is a string"
 text = "This is a string"
 text = """This is a string"""
 print(text)
@@ -9,7 +9,7 @@ text = "This isn't a string with double quote"
 text = """This isn't a string with a "double quote" """
 
 # Special Characters (escape characters)
-text = "\' \" \\ are \t escape \n character"
+text = "' \" \\ are \t escape \n character"
 print(text)
 
 # Raw Text
@@ -18,6 +18,7 @@ print(text)
 
 # String Resoruces of System
 import sys
+
 print(sys.getdefaultencoding())
 
 # Using unicode to Call for Character
@@ -58,28 +59,28 @@ print(text.title())
 print(text.swapcase())
 print(text.capitalize())
 
-# Formating 
+# Formating
 print(text.center(100))
 print(text.ljust(100))
 print(text.rjust(100))
 
 # Replacing
-print(text.replace('th', 'zz'))
-print(text.replace('th', 'zz', 1))
+print(text.replace("th", "zz"))
+print(text.replace("th", "zz", 1))
 
-# Spliting 
-print(text.split(' '))
+# Spliting
+print(text.split(" "))
 
 # Finding
-print(text.startswith('This'))
-print(text.endswith('This'))
-print(text.find('th'))
-print(text.find('th', 20))
-print(text.rfind('th', 20))
-print(text.index('th'))
+print(text.startswith("This"))
+print(text.endswith("This"))
+print(text.find("th"))
+print(text.find("th", 20))
+print(text.rfind("th", 20))
+print(text.index("th"))
 # ----print(text.index('xw'))
 
 # Join Lists into String
-words = ['one', 'two', 'three', 'four']
-text = ' '.join(words)
+words = ["one", "two", "three", "four"]
+text = " ".join(words)
 print(text)

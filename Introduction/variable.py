@@ -16,7 +16,7 @@ atype = type(a)
 print(a, atype)
 
 # back slash
-a = 'I\'m a string'
+a = "I'm a string"
 atype = type(a)
 print(a, atype)
 

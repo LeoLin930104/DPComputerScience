@@ -27,20 +27,43 @@ class LinkedList:
 
     def insert(self, data, index) -> int:
         n = Node(data)
-        curr = self.head
-        for i in range(index):
-            curr = curr.next
-        if curr.has_next():
-            n.next = curr.next
-            curr.next.prev = n
-        if curr.has_prev():
-            n.prev = curr.prev
-            curr.prev.next = n
+        if index > len(self) or index < 0:
+            raise IndexError("Index Out of Bound")
+        elif index == len(self):
+            return self.append(data)
+        elif index == 0:
+            n.next = self.curr
+            self.curr.prev = n
+            self.head = n
+        else:
+            self.reset_next()
+            for i in range(index):
+                self.curr = self.curr.next
+            n.prev = self.curr.prev
+            self.curr.prev.next = n
+            n.next = self.curr
+            self.curr.prev = n
+
         self.length += 1
         return self.length
 
     def remove(self, index) -> int:
-        pass
+        if index >= len(self) or index < 0:
+            raise IndexError("Index Out of Bound")
+        elif index == len(self) - 1:
+            self.tail.prev.next = None
+            self.tail = self.tail.prev
+        elif index == 0:
+            self.head.next.prev = None
+            self.head = self.head.next
+        else:
+            self.reset_next()
+            for i in range(index):
+                self.curr = self.curr.next
+            self.curr.prev.next = self.curr.next
+            self.curr.next.prev = self.curr.prev
+        self.length -= 1
+        return self.length
 
     def get_next(self) -> any:
         if not self.has_next():
@@ -79,16 +102,17 @@ class LinkedList:
     def get_list(self) -> list:
         result = []
         l.reset_next()
-        result.append(l.head.data)
-        for i in range(len(l) - 1):
+        result.append(l.curr.data)
+        while l.has_next():
             result.append(l.get_next())
         return result
 
 
 if __name__ == "__main__":
     l = LinkedList()
-    l.append(4)
-    l.append(5)
-    l.append(6)
-
+    for i in range(10):
+        l.append(i)
+    l.insert(10, 10)
+    l.insert(11, 11)
+    l.remove(0)
     print(l.get_list())

@@ -7,33 +7,49 @@ class Node:
 
 class LinkedList:
     def __init__(self):
-        # All list would need a head to point to the head
-        #  "   "     "     "  " tail "    "   "   "  tail
-        #  "   "     "     "  " curr "    "   "   "  current node
-        self.head = None
-        self.tail = None
+        self.head = Node(None)
+        self.tail = Node(None)
+        self.head.next = self.tail
+        self.tail.prev = self.head
         self.curr = self.head
         # Stores Length of the list
         self.length = 0
 
     def append(self, data) -> int:
-        # Creating New Node to hold New Data
         n = Node(data)
-        # Case of List is Empty
         if self.is_empty():
-            self.head = n
-            self.curr = n
-            self.tail = n
-        # Case of List is Not Empty
+            # List is empty, so n is first Node
+            self.head.next = n
+            self.tail.prev = n
+            n.prev = self.head
+            n.next = self.tail
         else:
-            n.prev = self.tail
-            self.tail.next = n
-            self.tail = n
-        # Updating Length of List
+            # List is not empty, insert after last Node
+            n.next = self.tail
+            n.prev = self.tail.prev
+            self.tail.prev.next = n
+            self.tail.prev = n
         self.length += 1
         return self.length
+        # Previous Code
+        # def append(self, data) -> int:
+        #     # Creating New Node to hold New Data
+        #     n = Node(data)
+        #     # Case of List is Empty
+        #     if self.is_empty():
+        #         self.head = n
+        #         self.curr = n
+        #         self.tail = n
+        #     # Case of List is Not Empty
+        #     else:
+        #         n.prev = self.tail
+        #         self.tail.next = n
+        #         self.tail = n
+        #     # Updating Length of List
+        #     self.length += 1
+        #     return self.length
 
-    def insert(self, data, index) -> int:
+    def insert(self, index, data) -> int:
         # Creating New Node to hold New Data
         n = Node(data)
         # Case of Index targeted is out of Bound
@@ -44,18 +60,19 @@ class LinkedList:
             return self.append(data)
         # Case of Index targeted is the Start of List
         elif index == 0:
-            n.next = self.head
-            self.head.prev = n
-            self.head = n
+            n.next = self.head.next
+            n.prev = self.head
+            self.head.next.prev = n
+            self.head.next = n
         # Case of Index is within List
         else:
-            self.reset_next()
+            tmp = self.head
             for i in range(index):
-                self.curr = self.curr.next
-            n.prev = self.curr.prev
-            self.curr.prev.next = n
-            n.next = self.curr
-            self.curr.prev = n
+                tmp = tmp.next
+            n.prev = tmp
+            n.next = tmp.next
+            tmp.next.prev = n
+            tmp.next = n
 
         self.length += 1
         return self.length
@@ -66,19 +83,19 @@ class LinkedList:
             raise IndexError("Index Out of Bound")
         # Case of Index targeted is the End of List
         elif index == len(self) - 1:
-            self.tail.prev.next = None
-            self.tail = self.tail.prev
+            self.tail.prev = self.tail.prev.prev
+            self.tail.prev.next = self.tail
         # Case of Index targeted is the Start of List
         elif index == 0:
-            self.head.next.prev = None
-            self.head = self.head.next
+            self.head.next = self.head.next.next
+            self.head.next.prev = self.head
         # Case of Index is within List
         else:
-            self.reset_next()
+            tmp = self.head
             for i in range(index):
-                self.curr = self.curr.next
-            self.curr.prev.next = self.curr.next
-            self.curr.next.prev = self.curr.prev
+                tmp = tmp.next
+            tmp.next = tmp.next.next
+            tmp.next.prev = tmp
         self.length -= 1
         return self.length
 
@@ -95,7 +112,7 @@ class LinkedList:
         # Check is previous Node does not Exist
         if not self.has_prev():
             raise IndexError("Front of List")
-        # Displacing prev to Previous Node
+        # Displacing curr to next Node
         self.curr = self.curr.prev
         # Secure Data
         return self.curr.data
@@ -103,28 +120,31 @@ class LinkedList:
     def reset_next(self) -> None:
         self.curr = self.head
 
+    def reset_prev(self) -> None:
+        self.curr = self.tail
+
     def has_next(self) -> bool:
-        return self.curr.next is not None
+        return self.curr.next is not self.tail and self.curr.next is not None
 
     def has_prev(self) -> bool:
-        return self.curr.prev is not None
+        return self.curr.prev is not self.head or self.curr.prev is not None
 
     def is_empty(self) -> bool:
-        return self.head is None and self.tail is None and self.curr is None
+        return self.head.next is self.tail
 
     def emptify(self) -> None:
-        self.head = None
-        self.tail = None
-        self.curr = None
+        self.head.next = self.tail
+        self.tail.prev = self.head
+        self.curr = self.head
+        self.length = 0
 
     def __len__(self) -> int:
         return self.length
 
     def get_list(self) -> list:
         result = []
-        l.reset_next()
-        result.append(l.curr.data)
-        while l.has_next():
+        self.reset_next()
+        while self.has_next():
             result.append(l.get_next())
         return result
 
@@ -133,6 +153,7 @@ if __name__ == "__main__":
     l = LinkedList()
     for i in range(10):
         l.append(i)
-    l.remove(0)
-    l.insert(10, 9)
+    for i in range(len(l)):
+        l.remove(i)
+        l.insert(i, i)
     print(l.get_list())

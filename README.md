@@ -207,7 +207,7 @@ File from classwork
 > + [Algorithms/sort.py](Algorithms/sort.py)
 > + [Algorithms/search.py](Algorithms/search.py)
 > + [Algorithms/miscellaneous.py](Algorithms/miscellaneous.py)
-## 2020/01/04
+## 2021/01/04
 > ### Content
 >     Introduction to Data Structures.
 >     Details to FILO(First In Last Out) and FIFO(First In First Out)
@@ -218,10 +218,15 @@ File from classwork
 > + [DataStructures/stack.py](DataStructures/stac.py)
 > + [DataStructures/queue.py](DataStructures/queue.py)
 > + [DataStructures/linkedlist.py](DataStructures/linkedlist.py)
-## 2020/01/08
+## 2021/01/08
 > ### Content
 >     Finishing up Register Page
 >     Completing Validating Function
 > ### File
 > + [ExchangeGram/register.py](ExchangeGram/register.py)
+## 2021/01/11
+> ### Content
+>     Finishing up LinkedList
+> ### File
+> + [DataStructures/linkedlist.py](DataStructures/linkedlist.py)
     

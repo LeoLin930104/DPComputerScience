@@ -220,7 +220,8 @@ File from classwork
 > + [DataStructures/linkedlist.py](DataStructures/linkedlist.py)
 ## 2020/01/08
 > ### Content
->     
+>     Finishing up Register Page
+>     Completing Validating Function
 > ### File
-> + [DataStructures/stack.py](DataStructures/stac.py)
+> + [ExchangeGram/register.py](ExchangeGram/register.py)
     

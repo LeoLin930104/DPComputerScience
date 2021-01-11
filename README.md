@@ -218,5 +218,9 @@ File from classwork
 > + [DataStructures/stack.py](DataStructures/stac.py)
 > + [DataStructures/queue.py](DataStructures/queue.py)
 > + [DataStructures/linkedlist.py](DataStructures/linkedlist.py)
-
+## 2020/01/08
+> ### Content
+>     
+> ### File
+> + [DataStructures/stack.py](DataStructures/stac.py)
     

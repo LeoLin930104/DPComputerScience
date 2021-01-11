@@ -1,4 +1,5 @@
 import tkinter as tk
+from common.util import validate_email
 from tkinter.ttk import Frame, Label, Entry, Button
 from .theme import PADX, PADY, ENTRY_WIDTH, LABEL_WIDTH
 from tkinter import font
@@ -11,10 +12,15 @@ class Register(Frame):
         # Setup Callbacks
         self.show_sign_in: Callable = None
         self.sign_in: Callable = None
-        self.validate_email: Callable = None
-        self.validate_username: Callable = None
-        self.validate_password: Callable = None
+        self.search_email: Callable = None
+        self.search_username: Callable = None
+        self.search_password: Callable = None
         self.register: Callable = None
+
+        self.username_valid: bool = False
+        self.email_valid: bool = False
+        self.password_valid: bool = False
+        self.passcnfm_valid: bool = False
         # Refocus to Email Entry
         self.email_Entry.focus()
 
@@ -95,7 +101,7 @@ class Register(Frame):
             pass_cnfmFrame, width=ENTRY_WIDTH, textvariable=self.passcnfm, show="*"
         )
         self.pass_cnfmEntry.pack(fill=tk.X, padx=PADX, pady=PADY, expand=True)
-        self.pass_cnfmEntry.bind("<FocusOut>", self._validate_confirm)
+        self.pass_cnfmEntry.bind("<FocusOut>", self._validate_password)
         # Password Error Row
         pass_errFrame = Frame(self)
         pass_errFrame.pack(fill=tk.X)
@@ -113,8 +119,8 @@ class Register(Frame):
         cncl_Button = Button(button_Frame, text="Cancel", command=self.cancel)
         cncl_Button.pack(side=tk.RIGHT, padx=PADX, pady=PADY, expand=False)
         # Register Button
-        register_Button = Button(button_Frame, text="Register", state="disabled")
-        register_Button.pack(side=tk.RIGHT, padx=PADX, pady=PADY, expand=False)
+        self.register_Button = Button(button_Frame, text="Register", state="disabled")
+        self.register_Button.pack(side=tk.RIGHT, padx=PADX, pady=PADY, expand=False)
         # View Password Button
         self.view_pass_Button = Button(
             button_Frame, text="View Password", command=self.view_password
@@ -142,12 +148,16 @@ class Register(Frame):
     def view_password(self):
         self.pass_Entry.configure(show="")
         self.pass_cnfmEntry.configure(show="")
-        self.view_pass_Button.configure(command=self.hide_password)
+        self.view_pass_Button.configure(
+            text="Hide Password", command=self.hide_password
+        )
 
     def hide_password(self):
         self.pass_Entry.configure(show="*")
         self.pass_cnfmEntry.configure(show="*")
-        self.view_pass_Button.configure(command=self.view_password)
+        self.view_pass_Button.configure(
+            text="View Passwrod", command=self.view_password
+        )
 
     def _show_sign_in(self):
         if self.show_sign_in is not None:
@@ -160,59 +170,63 @@ class Register(Frame):
         email = self.email.get()
         if len(email) == 0:
             self.email_errLabel.configure(text="Email Must not be Empty...")
-        elif "@" not in email:
-            self.email_errLabel.configure(text="Invalide Email Format...")
-        elif self.validate_email is not None and not self.validate_email(email):
-            pass
+            self.email_valid = False
+        elif not validate_email(email):
+            self.email_errLabel.configure(text="Email Format Invalide...")
+            self.email_valid = False
+        elif self.search_email is not None and not self.search_email(email):
+            self.email_errLabel.configure(text="Email Already Registered...")
+            self.email_valid = False
         else:
             self.email_errLabel.configure(text="")
+            self.email_valid = True
+        self.enable_register()
 
     def _validate_username(self, event):
         username = self.username.get()
         if len(username) == 0:
             self.user_errLabel.configure(text="Username Must not be Empty...")
-        elif self.validate_username is not None and not self.validate_username(
-            username
-        ):
-            pass
+            self.username_valid = False
+        elif self.search_username is not None and not self.search_username(username):
+            self.username_valid = False
         else:
             self.user_errLabel.configure(text="")
+            self.username_valid = True
+        self.enable_register()
 
     def _validate_password(self, event):
         password = self.password.get()
+        passcnfm = self.passcnfm.get()
         if len(password) == 0:
             self.pass_errLabel.configure(text="Password Must Not be Empty...")
+            self.password_valid = False
         elif len(password) < 8:
             self.pass_errLabel.configure(
                 text="Password Must be Longer than 8 Characters..."
             )
-        elif self.validate_password is not None and not self.validate_password(
-            password
-        ):
-            pass
+            self.password_valid = False
+        elif password != passcnfm:
+            self.pass_errLabel.configure(text="Password Must Match...   ")
+            self.passcnfm_valid = False
+        elif self.search_password is not None and not self.search_password(password):
+            self.pass_errLabel.configure(text="")
+            self.password_valid = False
         else:
             self.pass_errLabel.configure(text="")
+            self.passcnfm_valid = True
+            self.password_valid = True
+        self.enable_register()
 
-    def _validate_confirm(self, event):
-        password = self.password.get()
-        passcnfm = self.passcnfm.get()
-        if len(passcnfm) == 0:
-            if len(password) != 0:
-                self.pass_errLabel.configure(
-                    text="Please Enter the Confirming Password..."
-                )
-            else:
-                self.pass_errLabel.configure(text="Password Must Not be Empty...")
-        elif len(passcnfm) < 8:
-            self.pass_errLabel.configure(
-                text="Confirming Password is also Longer than 8 Characters..."
-            )
-        elif self.validate_password is not None and not self.validate_password(
-            password
+    def enable_register(self):
+        if (
+            self.email_valid
+            and self.username_valid
+            and self.password_valid
+            and self.passcnfm_valid
         ):
-            pass
+            self.register_Button.configure(state="normal")
         else:
-            self.pass_errLabel.configure(text="")
+            self.register_Button.configure(state="disabled")
 
     def _register(self):
         pass

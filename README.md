@@ -229,4 +229,15 @@ File from classwork
 >     Finishing up LinkedList
 > ### File
 > + [DataStructures/linkedlist.py](DataStructures/linkedlist.py)
-    
+## 2021/01/13
+> ### Content
+>     Introducing File IO
+>     Reading text file with context
+>     Introducing File opening option
+> +   r: read
+> +   rb: read binary
+> +   w: write
+> +   wb: write binary
+> +   a: append
+> ### File
+> + [FileIO/fileio.py](FileIO/fileio.py)

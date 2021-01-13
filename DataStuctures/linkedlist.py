@@ -127,7 +127,7 @@ class LinkedList:
         return self.curr.next is not self.tail and self.curr.next is not None
 
     def has_prev(self) -> bool:
-        return self.curr.prev is not self.head or self.curr.prev is not None
+        return self.curr.prev is not self.head and self.curr.prev is not None
 
     def is_empty(self) -> bool:
         return self.head.next is self.tail
@@ -148,6 +148,27 @@ class LinkedList:
             result.append(l.get_next())
         return result
 
+    def __iter__(self):
+        self.reset_next()
+        return self
+
+    def __next__(self):
+        try:
+            return self.get_next()
+        except IndexError:
+            raise StopIteration("End of List...")
+
+    def __getItem__(self, idx: int) -> any:
+        if idx < 0 or idx >= self.length:
+            raise IndexError(f"Index {idx} Out of Range...")
+
+        tmp = self.head
+        i = idx
+        while i >= 0:
+            tmp = tmp.next
+            i -= 1
+        return tmp.data
+
 
 if __name__ == "__main__":
     l = LinkedList()
@@ -157,3 +178,8 @@ if __name__ == "__main__":
         l.remove(i)
         l.insert(i, i)
     print(l.get_list())
+
+    for i in l:
+        print(i)
+
+    print(l.__getItem__(8))

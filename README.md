@@ -241,3 +241,4 @@ File from classwork
 > +   a: append
 > ### File
 > + [FileIO/fileio.py](FileIO/fileio.py)
+> + [FileIO/data.txt](FileIO/data.txt)

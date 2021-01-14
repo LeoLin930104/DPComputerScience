@@ -17,8 +17,8 @@ File from classwork
 >     Lists and its operation
 >     Simple loops
 > ### File
-> + [variable.py](variable.py)
-> + [operater.py](operater.py)
+> + [Introduction/variable.py](Introduction/variable.py)
+> + [Introduction/operater.py](Introduction/operater.py)
 
 ## 2020/09/18
 > ### Content
@@ -42,9 +42,9 @@ File from classwork
 > ### Homework
 >     Assigned Homework, list_exercises.py, due 2020/09/25 Friday.
 > ### File
-> + [lists.py](lists.py)
-> + [newton.py](newton.py)
-> + [list_exercises.py](list_exercises.py)
+> + [Introduction/lists.py](Introduction/lists.py)
+> + [Introduction/newton.py](Introduction/newton.py)
+> + [Introduction/list_exercises.py](Introduction/list_exercises.py)
 
 ## 2020/09/25
 > ### Content
@@ -69,19 +69,19 @@ File from classwork
 >     Finding
 >     Join Lists into String
 > ### File
-> + [dicts.py](dicts.py)
-> + [strings.py](strings.py)
+> + [Introduction/dicts.py](Introduction/dicts.py)
+> + [Introduction/strings.py](Introduction/strings.py)
 ## 2020/09/26
 > ### Content
 >     Practices of Strings, Dictionary from last class
 > ### File
-> + [string_exersices.py](string_exersices.py)
+> + [Introduction/string_exersices.py](Introduction/string_exersices.py)
 ## 2020/10/05
 > ### Content
 >     Introduction to Function
 >     Exercise with Newton's Method
 > ### File
-> + [function.py](function.py)
+> + [Introduction/function.py](Introduction/function.py)
 ## 2020/10/17
 > ### Content
 >     More exercises with Functions
@@ -90,7 +90,7 @@ File from classwork
 >     Function has pre-conditions and post-conditions
 >     Function can be nested in another function
 > ### File
-> + [function.py](function.py)
+> + [Introduction/function.py](Introduction/function.py)
 ## 2020/10/30
 > ### Content
 >     Generator Functions
@@ -101,8 +101,8 @@ File from classwork
 > ### Homework
 >     Assigned Homework, function_exercises.py, due 2020/11/2 Monday.
 > ### File
-> + [function.py](function.py)
-> + [function_exercises.py](function_exercises.py)
+> + [Introduction/function.py](Introduction/function.py)
+> + [Introduction/function_exercises.py](Introduction/function_exercises.py)
 ## 2020/11/06
 > ### Content
 >     Check on the function homework.
@@ -111,8 +111,8 @@ File from classwork
 >     Introducing curses and downlaod
 >     Start writing own text adventure
 > ### File
-> + [function_exercises.py](function_exercises.py)
-> + [context.py](Text_Adventure/context.py)
+> + [Introduction/function_exercises.py](Introduction/function_exercises.py)
+> + [Text_Adventure/context.py](Text_Adventure/context.py)
 ## 2020/11/13
 > ### Content
 >     Revise on the function homework.
@@ -123,8 +123,8 @@ File from classwork
 >     Seperates Function of Drawing Menu and Calling consecutive story line
 >     Reconnects to the idea that function only to one thing
 > ### File
-> + [context.py](Text_Adventure/context.py)
-> + [story.py](Text_Adventure/story.py)
+> + [Text_Adventure/context.py](Text_Adventure/context.py)
+> + [Text_Adventure/story.py](Text_Adventure/story.py)
 ## 2020/11/20
 > ### Content
 > #### Text Adventure
@@ -135,18 +135,18 @@ File from classwork
 >     Start with introduction to Object Orientation in Python
 >     Wrote Example Class Circle
 > ### File
-> + [context.py](Text_Adventure/context.py)
-> + [story.py](Text_Adventure/story.py)
-> + [Circle.py](Objects/Circle.py)
+> + [Text_Adventure/context.py](Text_Adventure/context.py)
+> + [Text_Adventure/story.py](Text_Adventure/story.py)
+> + [Objects/Circle.py](Objects/Circle.py)
 ## 2020/11/27
 > ### Content
 >     Writing other class: Rectangle, RegularPolygon
 >     Annotation to Property, Setter
 >     Modify default functions
 > ### File
-> + [RegularPolygon.py](Objects/RegularPolygon.py)
-> + [Rectangle.py](Objects/Rectangle.py)
-> + [Circle.py](Objects/Circle.py)
+> + [Objects/RegularPolygon.py](Objects/RegularPolygon.py)
+> + [Objects/Rectangle.py](Objects/Rectangle.py)
+> + [Objects/Circle.py](Objects/Circle.py)
 ## 2020/12/04
 > ### Content
 >     Discussing about what is our big project Going to be,

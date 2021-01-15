@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter.ttk import Frame, Label, Entry, Button
-from .theme import PADX, PADY, ENTRY_WIDTH, LABEL_WIDTH
+from .util.theme import PADX, PADY, ENTRY_WIDTH, LABEL_WIDTH
 from tkinter import font
 
 

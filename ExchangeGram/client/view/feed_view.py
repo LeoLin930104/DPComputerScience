@@ -1,8 +1,8 @@
 import tkinter as tk
-from client.view.util.scrollable_frame import ScrollableFrame
+from client.view.scrollable_frame import ScrollableFrame
 from tkinter.ttk import Frame, Label, Button, Style
 from typing import Callable
-from client.view.util.theme import PADX, PADY
+from client.view.theme import PADX, PADY
 
 
 class FeedView(Frame):
@@ -11,13 +11,13 @@ class FeedView(Frame):
         self.layout_components()
 
     def layout_components(self):
-        self.pack(fill=tk.BOTH, expand=False, padx=PADX, pady=PADY)
+        self.pack(fill=tk.BOTH, expand=True, padx=PADX, pady=PADY)
 
         topFrame = Frame(self)
-        topFrame.grid(columnspan=2, row=1, sticky=tk.E + tk.W + tk.N)
+        topFrame.grid(columnspan=2, row=1, sticky=tk.N + tk.W + tk.E)
 
         home_Button = Button(topFrame, text="Home")
-        home_Button.grid(padx=PADX, pady=PADY, column=1, row=1, sticky=tk.W)
+        home_Button.grid(padx=PADX, pady=PADY, column=1, row=1, sticky=tk.N + tk.W)
 
         feed_Button = Button(topFrame, text="Feed")
         feed_Button.grid(padx=PADX, pady=PADY, column=2, row=1, sticky=tk.W)

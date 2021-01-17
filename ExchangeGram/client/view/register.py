@@ -1,7 +1,7 @@
 import tkinter as tk
 from common.util import validate_email
 from tkinter.ttk import Frame, Label, Entry, Button
-from .util.theme import PADX, PADY, ENTRY_WIDTH, LABEL_WIDTH
+from view.theme import PADX, PADY, ENTRY_WIDTH, LABEL_WIDTH
 from tkinter import font
 
 

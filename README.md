@@ -250,10 +250,10 @@ File from classwork
 >     Use flat files to make a "simple" database for ExchangeGram.
 > ### File
 > + [Algorithms/Enigma/Enigma.py](Algorithms/Enigma/Enigma.py)
-> + [Algorithms/Psuedocode/Binary_Search.txt](Algorithms/Psuedocode/Binary_Search.txt)
-> + [Algorithms/Psuedocode/Bubble_Sort.txt](Algorithms/Psuedocode/Bubble_Sort.txt)
-> + [Algorithms/Psuedocode/Insertion_Sort.txt](Algorithms/Psuedocode/Insertion_Sort.txt)
-> + [Algorithms/Psuedocode/Linear_Search.txt](Algorithms/Psuedocode/Linear_Search.txt)
-> + [Algorithms/Psuedocode/Selection_Sort.txt](Algorithms/Psuedocode/Selection_Sort.txt)
+> + [Algorithms/Pseudocode/Binary_Search.txt](Algorithms/Pseudocode/Binary_Search.txt)
+> + [Algorithms/Pseudocode/Bubble_Sort.txt](Algorithms/Pseudocode/Bubble_Sort.txt)
+> + [Algorithms/Pseudocode/Insertion_Sort.txt](Algorithms/Pseudocode/Insertion_Sort.txt)
+> + [Algorithms/Pseudocode/Linear_Search.txt](Algorithms/Pseudocode/Linear_Search.txt)
+> + [Algorithms/Pseudocode/Selection_Sort.txt](Algorithms/Pseudocode/Selection_Sort.txt)
 > + [ExchangeGram/common/database/abstract_database.py](ExchangeGram/common/database/abstract_database.py)
 > + [ExchangeGram/common/database/json_database.py](ExchangeGram/common/database/json_database.py)

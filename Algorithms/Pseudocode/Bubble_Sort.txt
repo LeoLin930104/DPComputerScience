@@ -1,0 +1,18 @@
+# PseudoCode For Bubble Sort
+# Small to Big
+
+# List Yet to be Sorted
+A = Ramdom List
+Loop idx from 0 to (Length 0f A) - 1
+    i = 0
+    j = 1
+    Loop idx from 0 to (Length of A) - 1
+        If A[i] > A[j] then
+            tmp = A[i]
+            A[i] = A[j] 
+            A[j] = tmp
+        End If
+        i = j + 1
+        j = j + 1
+    End Loop
+End Loop

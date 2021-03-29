@@ -242,3 +242,18 @@ File from classwork
 > ### File
 > + [FileIO/fileio.py](FileIO/fileio.py)
 > + [FileIO/data.txt](FileIO/data.txt)
+## 2021/03/29
+> ### Content
+>     Great Catch up From 2021/01/13 to 2020/03/29
+>     Written an Enigma Machine that can Cipher a file and Decipher a file with the same random seed of the program.
+>     Wrote Psuedo Code of Search and Sort Algorithms for practicing Pseudo Code.
+>     Use flat files to make a "simple" database for ExchangeGram.
+> ### File
+> + [Algorithms/Enigma/Enigma.py](Algorithms/Enigma/Enigma.py)
+> + [Algorithms/Psuedocode/Binary_Search.txt](Algorithms/Psuedocode/Binary_Search.txt)
+> + [Algorithms/Psuedocode/Bubble_Sort.txt](Algorithms/Psuedocode/Bubble_Sort.txt)
+> + [Algorithms/Psuedocode/Insertion_Sort.txt](Algorithms/Psuedocode/Insertion_Sort.txt)
+> + [Algorithms/Psuedocode/Linear_Search.txt](Algorithms/Psuedocode/Linear_Search.txt)
+> + [Algorithms/Psuedocode/Selection_Sort.txt](Algorithms/Psuedocode/Selection_Sort.txt)
+> + [ExchangeGram/common/database/abstract_database.py](ExchangeGram/common/database/abstract_database.py)
+> + [ExchangeGram/common/database/json_database.py](ExchangeGram/common/database/json_database.py)

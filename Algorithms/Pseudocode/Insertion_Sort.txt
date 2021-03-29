@@ -1,0 +1,20 @@
+# PseudoCode For Selection Sort
+# Small to Big
+
+# List Yet to be Sorted
+A = Ramdom List
+i = 0
+While i < Length of A - 1
+    j = i + 1
+    min_idx = 1
+    While j < Length of A 
+        If A[min_idx] < A[j] then
+            min_idx = j
+        End If
+        j = j + 1
+    End While
+    tmp = A[i]
+    A[i] = A[min_idx]
+    A[min_idx] = tmp
+    i = i + 1
+End While

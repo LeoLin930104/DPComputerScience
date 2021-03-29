@@ -1,0 +1,13 @@
+# PseudoCode For Linear Search
+# Precondition: Target is Provided
+
+A = Random List
+Target = Provided Target
+i = 0
+While i < Length of A
+    If A[i] == Target then
+        return i
+    End If
+    i = i + 1
+End While
+return "Target Not Found"

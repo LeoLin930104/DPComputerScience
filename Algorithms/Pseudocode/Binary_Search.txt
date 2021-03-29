@@ -1,0 +1,27 @@
+# PseudoCode For Binary Search
+# Percondition: Target is Provided
+#               List is Sorted
+
+A = Sorted List
+Target = Provided Target
+max = Length of A
+min = 0
+mid = (max + min) / 2
+
+Sub Binary_Search(min, mid, max, A, Target)
+    If max >= min
+        If A[mid] == Target then
+            return mid
+        Else If A[mid] < Target then
+            max = mid
+            mid = (max + min) / 2
+            Binary_Search(min, mid, max, A, Target)
+        Else If A[mid] > Target then
+            min = mid 
+            mid = (max + min) / 2
+            Binary_Search(min, mid, max, A, Target)
+        End If
+    Else
+        return "Target Not Found"
+    End If
+End Sub

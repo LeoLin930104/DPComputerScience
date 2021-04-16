@@ -1,9 +1,9 @@
 # Abstract Database Model
 from abc import ABC, abstractmethod
 from typing import List
-from common.models.User import User
-from common.models.Post import Post
-from common.models.Comment import Comment
+from common.models.user import User
+from common.models.post import Post
+from common.models.comment import Comment
 
 
 class AbstractDatabase(ABC):

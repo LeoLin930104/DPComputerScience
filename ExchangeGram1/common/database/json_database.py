@@ -3,15 +3,13 @@ from .abstract_database import AbstractDatabase
 from typing import List
 import json
 import os
-from common.models.User import User
-from common.models.Post import Post
-from common.models.Comment import Comment
+from common.models.user import User
+from common.models.post import Post
+from common.models.comment import Comment
 
 
 class jsonDatabase(AbstractDatabase):
     def __init__(self, path: str) -> None:
-        if not os.path.exists(path):
-            os.makedirs(path)
         self._user_filepath = os.path.join(path, "user.dat")
         self._post_filepath = os.path.join(path, "post.dat")
         self._comment_filepath = os.path.join(path, "comment.dat")
@@ -43,8 +41,8 @@ class jsonDatabase(AbstractDatabase):
                 self._users.append(user)
 
     def _save_users(self):
-        json_string = json.dumps([u.__dict__ for u in self._users])
         with open(self._user_filepath, "w") as outfile:
+            json_string = json.dumps([u.__dict__ for u in self._users])
             outfile.write(json_string)
 
     def create_user(self, user: User) -> User:

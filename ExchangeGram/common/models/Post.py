@@ -1,5 +1,5 @@
 class Post:
-    def __init__(self, user_id: int, date: int):
+    def __init__(self, user_id: int, content: str, date: int):
         self._id = 0
         self._user_id = user_id
         self.content = None

@@ -257,3 +257,23 @@ File from classwork
 > + [Algorithms/Pseudocode/Selection_Sort.txt](Algorithms/Pseudocode/Selection_Sort.txt)
 > + [ExchangeGram/common/database/abstract_database.py](ExchangeGram/common/database/abstract_database.py)
 > + [ExchangeGram/common/database/json_database.py](ExchangeGram/common/database/json_database.py)
+## 2021/04/19
+> ### Content
+>     ExchangeGram have adapted a json-based database!
+>     We are only conducting this method since we haven't learnt how to connet a database with python...
+>     By using the json module build in python, we can read and write from flat files.
+>     Using the flat files, we have stored data of Users, Posts and Comment.
+>     The downside to this method is that stroing any data would cause our system to rewrite the file.
+>     Really inefficient...
+>     But remember, this is only the compensation of a real database.
+>     
+>     Which...A abstract layer of Database is built to rapidly switch from the current json database to a real one.
+>     This layer consist to abstracting the methods used by the client side to opeerate the database.
+>     When ever there is a different kind of database, we can quickly adapt it to our system.
+> ### File
+> + [ExchangeGram\common\database\abstract_database.py](ExchangeGram\common\database\abstract_database.py)
+> + [ExchangeGram\common\database\json_database.py](ExchangeGram\common\database\json_database.py)
+> + [ExchangeGram\common\database\database_abstraction_layer.py](ExchangeGram\common\database\database_abstraction_layer.py)
+> + [ExchangeGram\data\user.dat](ExchangeGram\data\user.dat)
+> + [ExchangeGram\data\post.dat](ExchangeGram\data\post.dat)
+> + [ExchangeGram\data\comment.dat](ExchangeGram\data\comment.dat)

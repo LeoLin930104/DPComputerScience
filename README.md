@@ -271,9 +271,9 @@ File from classwork
 >     This layer consist to abstracting the methods used by the client side to opeerate the database.
 >     When ever there is a different kind of database, we can quickly adapt it to our system.
 > ### File
-> + [ExchangeGram\common\database\abstract_database.py](ExchangeGram\common\database\abstract_database.py)
-> + [ExchangeGram\common\database\json_database.py](ExchangeGram\common\database\json_database.py)
-> + [ExchangeGram\common\database\database_abstraction_layer.py](ExchangeGram\common\database\database_abstraction_layer.py)
-> + [ExchangeGram\data\user.dat](ExchangeGram\data\user.dat)
-> + [ExchangeGram\data\post.dat](ExchangeGram\data\post.dat)
-> + [ExchangeGram\data\comment.dat](ExchangeGram\data\comment.dat)
+> + [ExchangeGram/common/database/abstract_database.py](ExchangeGram/common/database/abstract_database.py)
+> + [ExchangeGram/common/database/json_database.py](ExchangeGram/common/database/json_database.py)
+> + [ExchangeGram/common/database/database_abstraction_layer.py](ExchangeGram/common/database/database_abstraction_layer.py)
+> + [ExchangeGram/data/user.dat](ExchangeGram/data/user.dat)
+> + [ExchangeGram/data/post.dat](ExchangeGram/data/post.dat)
+> + [ExchangeGram/data/comment.dat](ExchangeGram/data/comment.dat)

@@ -3,6 +3,6 @@ class Comment:
         self._id = 0
         self._post_id = post_id
         self._user_id = user_id
-        self.content = None
+        self.content = content
         self.date = date
         self.likes = 0

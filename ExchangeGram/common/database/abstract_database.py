@@ -16,11 +16,35 @@ class AbstractDatabase(ABC):
         pass
 
     @abstractmethod
+    def delete_user(self, user: User) -> bool:
+        pass
+
+    @abstractmethod
     def update_user(self, user: User) -> User:
         pass
 
     @abstractmethod
-    def delete_user(self, user: User) -> bool:
+    def create_post(self, post: Post) -> Post:
+        pass
+
+    @abstractmethod
+    def delete_post(self, post: Post) -> bool:
+        pass
+
+    @abstractmethod
+    def update_post(self, post: Post) -> Post:
+        pass
+
+    @abstractmethod
+    def create_comment(self, comment: Comment) -> Comment:
+        pass
+
+    @abstractmethod
+    def delete_comment(self, comment: Comment) -> bool:
+        pass
+
+    @abstractmethod
+    def update_comment(self, comment: Comment) -> Comment:
         pass
 
     @abstractmethod
@@ -32,5 +56,9 @@ class AbstractDatabase(ABC):
         pass
 
     @abstractmethod
-    def authenticate(self, user: User) -> User:
+    def get_user_by_username(self, usernmae: str) -> User:
+        pass
+
+    @abstractmethod
+    def get_user_by_email(self, email: str) -> User:
         pass

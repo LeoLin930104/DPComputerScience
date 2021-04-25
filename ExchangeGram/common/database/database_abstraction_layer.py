@@ -11,9 +11,13 @@ class Dbal:
     def __init__(self, db: AbstractDatabase):
         self.db = db
 
-    def signup(self, username: str, email: str, password: str) -> User:
+    def register(self, username: str, email: str, password: str) -> User:
         new_user = self.db.create_user(
-            User(username=username, email=email, password_hash=gen_pwd_hsh(password))
+            User(
+                username=username,
+                email=email,
+                password_hash=gen_pwd_hsh(password),
+            )
         )
         if new_user is None:
             raise Exception("Could not Create User")
@@ -41,5 +45,16 @@ class Dbal:
             )
         )
         if new_comment is None:
-            raise Exception("COuld not Create Comment")
+            raise Exception("Could not Create Comment")
         return new_comment
+
+    def authenticate(self, username: str, password: str) -> User:
+        user = self.db.get_user_by_username(username)
+        if user == None:
+            return False
+        if (
+            check_pwd(password.encode("utf-8"), user._password_hash.encode("utf-8"))
+            == False
+        ):
+            return False
+        return user

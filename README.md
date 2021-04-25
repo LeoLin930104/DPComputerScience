@@ -277,3 +277,15 @@ File from classwork
 > + [ExchangeGram/data/user.dat](ExchangeGram/data/user.dat)
 > + [ExchangeGram/data/post.dat](ExchangeGram/data/post.dat)
 > + [ExchangeGram/data/comment.dat](ExchangeGram/data/comment.dat)
+## 2021/04/25
+> ### Content
+>     Connecting our database_abtracted api to our client app.
+>     But the responsibility of communicating with the database is of the server, but we haven't started setting that up, so we have connected our database to our app momentarily.
+>     By creating a series of functions that is based off our abstract database, we won't be have to change our app when we adapt another kind of database.
+>     Since we are learning database next year, by around October, 2021, we can write a seperate database to adapt of app to this new database.
+> + [ExchangeGram/client/app.py](ExchangeGram/client/app.py)
+> + [ExchangeGram/client/view/sign_in.py](ExchangeGram/client/view/sign_in.py)
+> + [ExchangeGram/client/view/register.py](ExchangeGram/client/view/register.py)
+> + [ExchangeGram/common/database/json_database.py](ExchangeGram/common/database/json_database.py)
+> + [ExchangeGram/common/database/database_abstraction_layer.py](ExchangeGram/common/database/database_abstraction_layer.py)
+

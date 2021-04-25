@@ -3,6 +3,7 @@ from common.util import validate_email
 from tkinter.ttk import Frame, Label, Entry, Button
 from .theme import PADX, PADY, ENTRY_WIDTH, LABEL_WIDTH
 from tkinter import font
+import client
 
 
 class Register(Frame):
@@ -119,7 +120,9 @@ class Register(Frame):
         cncl_Button = Button(button_Frame, text="Cancel", command=self.cancel)
         cncl_Button.pack(side=tk.RIGHT, padx=PADX, pady=PADY, expand=False)
         # Register Button
-        self.register_Button = Button(button_Frame, text="Register", state="disabled")
+        self.register_Button = Button(
+            button_Frame, text="Register", state="disabled", command=self._register
+        )
         self.register_Button.pack(side=tk.RIGHT, padx=PADX, pady=PADY, expand=False)
         # View Password Button
         self.view_pass_Button = Button(
@@ -163,8 +166,11 @@ class Register(Frame):
         if self.show_sign_in is not None:
             self.show_sign_in()
             self.cancel()
-        else:
-            pass
+
+    def _register(self):
+        if self.register is not None:
+            self.register()
+            self.cancel()
 
     def _validate_email(self, event):
         email = self.email.get()
@@ -225,8 +231,3 @@ class Register(Frame):
             and self.passcnfm_valid
         ):
             self.register_Button.configure(state="normal")
-        else:
-            self.register_Button.configure(state="disabled")
-
-    def _register(self):
-        pass

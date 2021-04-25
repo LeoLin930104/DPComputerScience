@@ -32,6 +32,7 @@ class SignInView(Frame):
         self.user_Entry = Entry(
             user_Frame, width=ENTRY_WIDTH, textvariable=self.username
         )
+        self.user_Entry.bind("<FocusOut>", self.enable_sign_in)
         self.user_Entry.pack(fill=tk.X, padx=PADX, pady=PADY, expand=True)
 
         # Password Row
@@ -39,16 +40,19 @@ class SignInView(Frame):
         pass_Frame.pack(fill=tk.X)
         pass_Label = Label(pass_Frame, text="Password:", width=LABEL_WIDTH)
         pass_Label.pack(side=tk.LEFT, padx=PADX, pady=PADY)
-        self.pEntry = Entry(
+        self.pass_Entry = Entry(
             pass_Frame, width=ENTRY_WIDTH, textvariable=self.password, show="*"
         )
-        self.pEntry.pack(fill=tk.X, padx=PADX, pady=PADY, expand=True)
+        self.pass_Entry.bind("<FocusOut>", self.enable_sign_in)
+        self.pass_Entry.pack(fill=tk.X, padx=PADX, pady=PADY, expand=True)
 
         # Error Row
         err_Frame = Frame(self)
         err_Frame.pack(fill=tk.X)
-        err_Label = Label(err_Frame, text="", foreground="red", font=error_font)
-        err_Label.pack(side=tk.LEFT, anchor="center", expand=True, padx=PADX, pady=PADY)
+        self.err_Label = Label(err_Frame, text="", foreground="red", font=error_font)
+        self.err_Label.pack(
+            side=tk.LEFT, anchor="center", expand=True, padx=PADX, pady=PADY
+        )
 
         # Button Row
         button_Frame = Frame(self)
@@ -57,8 +61,10 @@ class SignInView(Frame):
         cncl_Button = Button(button_Frame, text="Cancel", command=self.cancel)
         cncl_Button.pack(side=tk.RIGHT, padx=PADX, pady=PADY, expand=False)
         # Sign in Button
-        sgnn_Button = Button(button_Frame, text="Sign in", state="disabled")
-        sgnn_Button.pack(side=tk.RIGHT, padx=PADX, pady=PADY, expand=False)
+        self.sgnn_Button = Button(
+            button_Frame, text="Sign in", state="disabled", command=self._sign_in
+        )
+        self.sgnn_Button.pack(side=tk.RIGHT, padx=PADX, pady=PADY, expand=False)
 
         # Register Row
         register_Frame = Frame(self)
@@ -69,6 +75,20 @@ class SignInView(Frame):
         register_Button.pack(side=tk.RIGHT, padx=PADX, pady=PADY, expand=False)
         register_Label = Label(register_Frame, text="Not a Member of ExchangeGram?")
         register_Label.pack(side=tk.RIGHT, padx=PADX, pady=PADY)
+
+    def _sign_in(self):
+        if self.sign_in is not None:
+            self.sign_in()
+            self.cancel()
+
+    def enable_sign_in(self, event):
+        if self.username.get() != "" and self.password.get() != "":
+            self.sgnn_Button.configure(state="normal")
+        else:
+            self.sgnn_Button.configure(state="disabled")
+
+    def failed_sign_in(self):
+        self.err_Label.configure(text="Username/Password Incorrect")
 
     def cancel(self):
         self.username.set("")

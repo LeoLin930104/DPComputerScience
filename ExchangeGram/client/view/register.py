@@ -170,7 +170,6 @@ class Register(Frame):
     def _register(self):
         if self.register is not None:
             self.register()
-            self.cancel()
 
     def _validate_email(self, event):
         email = self.email.get()
@@ -231,3 +230,9 @@ class Register(Frame):
             and self.passcnfm_valid
         ):
             self.register_Button.configure(state="normal")
+
+    def failed_register(self):
+        self.email.set("")
+        self.username.set("")
+        self.pass_errLabel.configure(text="Email or Username Already used")
+        self.email_Entry.focus()

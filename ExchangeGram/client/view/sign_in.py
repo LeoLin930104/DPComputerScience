@@ -79,7 +79,6 @@ class SignInView(Frame):
     def _sign_in(self):
         if self.sign_in is not None:
             self.sign_in()
-            self.cancel()
 
     def enable_sign_in(self, event):
         if self.username.get() != "" and self.password.get() != "":

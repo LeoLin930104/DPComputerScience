@@ -26,6 +26,7 @@ class Application(Frame):
         self.sign_in_view.show_register = self.show_register
         # Initialize Feed Page
         self.feed_view = FeedView(self)
+        self.feed_view.sign_out = self._sign_out
         # Show First Page: Sign in Page
         self.show_sign_in()
 
@@ -56,7 +57,11 @@ class Application(Frame):
             email=self.register.email.get(),
             password=self.register.password.get(),
         )
-        self.show_feed_view()
+        if self.user is not None:
+            self.show_feed_view()
+            self.register.cancel()
+        else:
+            self.register.failed_register()
 
     def _sign_in(self):
         self.user = self.dbal.authenticate(
@@ -65,8 +70,13 @@ class Application(Frame):
         )
         if self.user is not None:
             self.show_feed_view()
+            self.sign_in_view.cancel()
         else:
             self.sign_in_view.failed_sign_in()
+
+    def _sign_out(self):
+        self.user = None
+        self.show_sign_in()
 
 
 def start_client(dbal: Dbal):

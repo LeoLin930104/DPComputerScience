@@ -288,4 +288,15 @@ File from classwork
 > + [ExchangeGram/client/view/register.py](ExchangeGram/client/view/register.py)
 > + [ExchangeGram/common/database/json_database.py](ExchangeGram/common/database/json_database.py)
 > + [ExchangeGram/common/database/database_abstraction_layer.py](ExchangeGram/common/database/database_abstraction_layer.py)
+## 2021/04/29
+> ### Content
+>     Built a mysql Database!
+>     This is a new set of database, which is completely apart from the original json database.
+>     This is possible since the database object that we pass into database abstraction layer is a different one,
+>     It was the jsonDatabse Object, now it is the mysqlDatabase Object.
+>     This is possible since that both these class implements the abstract database class
+>     So, from now on, we can continous to plant a completely different database to this system when nescessary while not distorting the original style of the code.
+> + [ExchangeGram/start_client.py](ExchangeGram/start_client.py)
+> + [ExchangeGram/common/database/mysql_database.py](ExchangeGram/common/database/mysql_database.py)
+> + [ExchangeGram/common/database/mysql_initilizer.py](ExchangeGram/common/database/mysql_initilizer.py)
 

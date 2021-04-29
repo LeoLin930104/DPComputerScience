@@ -12,6 +12,10 @@ class Dbal:
         self.db = db
 
     def register(self, username: str, email: str, password: str) -> User:
+        if not self.db.username_is_unique(username) or not self.db.email_is_unique(
+            email
+        ):
+            return
         new_user = self.db.create_user(
             User(
                 username=username,
@@ -28,7 +32,7 @@ class Dbal:
             Post(
                 user_id=user_id,
                 content=content,
-                date=datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+                date=datetime.now().strftime("%m/%d/%Y %H:%M:%S"),
             )
         )
         if new_post is None:
@@ -41,7 +45,7 @@ class Dbal:
                 post_id=post_id,
                 user_id=user_id,
                 content=content,
-                date=datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+                date=datetime.now().strftime("%m/%d/%Y %H:%M:%S"),
             )
         )
         if new_comment is None:
@@ -50,11 +54,8 @@ class Dbal:
 
     def authenticate(self, username: str, password: str) -> User:
         user = self.db.get_user_by_username(username)
-        if user == None:
-            return False
-        if (
-            check_pwd(password.encode("utf-8"), user._password_hash.encode("utf-8"))
-            == False
+        if user == None or not check_pwd(
+            password.encode("utf-8"), user._password_hash.encode("utf-8")
         ):
-            return False
+            return
         return user

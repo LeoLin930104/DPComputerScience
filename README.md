@@ -298,5 +298,5 @@ File from classwork
 >     So, from now on, we can continous to plant a completely different database to this system when nescessary while not distorting the original style of the code.
 > + [ExchangeGram/start_client.py](ExchangeGram/start_client.py)
 > + [ExchangeGram/common/database/mysql_database.py](ExchangeGram/common/database/mysql_database.py)
-> + [ExchangeGram/common/database/mysql_initilizer.py](ExchangeGram/common/database/mysql_initilizer.py)
+> + [ExchangeGram/common/database/mysql_initializer.py](ExchangeGram/common/database/mysql_initializer.py)
 
